@@ -1550,6 +1550,10 @@ img:not([src]) {
 .img-alt:hover {
   text-decoration: none !important;
 }
+#toggle-sidebar {
+  left: 100px;
+  bottom: 80px;
+}
 :root {
   --hl-color: #eff;
   --hl-bg: #212121;
