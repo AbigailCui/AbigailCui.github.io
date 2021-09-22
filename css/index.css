@@ -1551,8 +1551,17 @@ img:not([src]) {
   text-decoration: none !important;
 }
 #toggle-sidebar {
-  left: 100px;
-  bottom: 80px;
+  position: fixed;
+  bottom: 70px;
+  left: $sidebar-icon-left;
+  z-index: 100;
+  font-size: $sidebar-icon-size;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  transition: all 0.2s;
 }
 :root {
   --hl-color: #eff;
