@@ -76,6 +76,12 @@
 <p>   *列好分支清单，统一好分支的命名，不要使分支混乱<br>   *定时合并和清理分支，保证分支的简洁度和项目功能的完整度<br>   *在一个大版本即将发布之时，检查好该版本的功能完整性以及测试是否可以正常运行，尽量少做在发布之时修改bug。<br>   *提交每个版本时要做好清晰的备注</p>
 <h2 id="4-git工作流程"><a href="#4-git工作流程" class="headerlink" title="4.git工作流程"></a>4.git工作流程</h2><p>参考博客：<a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html">http://www.ruanyifeng.com/blog/2015/12/git-workflow.html</a></p>
 ]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
   </entry>
   <entry>
     <title>PicGo+Gitee搭建图床</title>
@@ -83,34 +89,41 @@
     <content><![CDATA[<p>来使用 PicGo+Gitee 来搭建图床，但有一点需要注意，就是码云仓库容量的限制<br>特别谢鸣过客励心!    我转载一下步骤大致差不多的</p>
 <h1 id="前端性能优化之搭建网络图床"><a href="#前端性能优化之搭建网络图床" class="headerlink" title="前端性能优化之搭建网络图床"></a>前端性能优化之搭建网络图床</h1><p>pick的原因</p>
 <ol>
-<li>  之前我的笔记必须每一个都单独设置一个img来放东西<br>  <img src="https://gitee.com/abigail110/blogimage/raw/master/img/4747.png"><br>  非常非常占网站容量,会造成网站带不动加载很慢,别人访问我的网站会用的停难受的吧</li>
+<li>  之前我的笔记必须每一个都单独设置一个img来放东西<br>  <img src="https://gitee.com/abigailcui/blogimage/raw/master/img/4747.png"><br>  非常非常占网站容量,会造成网站带不动加载很慢,别人访问我的网站会用的停难受的吧</li>
 <li> 用存储桶会提高一些速度的,但是会有收费的趋势,我的一个桶已经欠费了</li>
 <li>cdn标签会提速但是存储桶最大就20M一下就没了,图床你可以选很多仓库,即使一个饱和,<br> 在换一个就好啦😼</li>
 <li> 我是白嫖党,后期运维真的烧钱的,能省就省,真的方便啊啊</li>
 </ol>
-<h1 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h1><p>打开码云官方网站，进入你的个人仓库界面，新建仓库，如何新建仓库的详细步骤我就不说了，相信搭建都会，直接上一张图，图中有文字说明：<br>图我就不截了,这个UU弄的更好<br>     <img src="https://gitee.com/abigail110/blogimage/raw/master/img/4848.png"><br>然后点击创建即可。</p>
+<h1 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h1><p>打开码云官方网站，进入你的个人仓库界面，新建仓库，如何新建仓库的详细步骤我就不说了，相信搭建都会，直接上一张图，图中有文字说明：<br>图我就不截了,这个UU弄的更好<br>     <img src="https://gitee.com/abigailcui/blogimage/raw/master/img/4848.png"><br>然后点击创建即可。</p>
 <h1 id="设置私人令牌"><a href="#设置私人令牌" class="headerlink" title="设置私人令牌"></a>设置私人令牌</h1><p>看图中指示操作即可</p>
 <blockquote>
-<p>设置 -&gt; 私人令牌 -&gt; 生成新令牌<br>   <img src="https://gitee.com/abigail110/blogimage/raw/master/img/3449.png"><br>提交后，会提示你输入密码进行验证，验证成功后，会有提示框，提示框中的内容即为私人令牌。先复制保存，下面要用到。<br> <img src="https://gitee.com/abigail110/blogimage/raw/master/img/7878,.png"></p>
+<p>设置 -&gt; 私人令牌 -&gt; 生成新令牌<br>   <img src="https://gitee.com/abigailcui/blogimage/raw/master/img/3449.png"><br>提交后，会提示你输入密码进行验证，验证成功后，会有提示框，提示框中的内容即为私人令牌。先复制保存，下面要用到。<br> <img src="https://gitee.com/abigailcui/blogimage/raw/master/img/7878,.png"></p>
 </blockquote>
 <p> <strong>记得拷贝私人令牌,之后会明码变暗码你再也看不到这个数字串了</strong></p>
 <h1 id="配置-Gitee-图床"><a href="#配置-Gitee-图床" class="headerlink" title="配置 Gitee 图床"></a>配置 Gitee 图床</h1><ol>
 <li><p>首先就是需要软件 PicGo (<a href="https://github.com/Molunerfinn/PicGo">https://github.com/Molunerfinn/PicGo</a>) ，自行下载，传送门，然后进行安装。</p>
 </li>
-<li><p>接着打开软件，点击软件界面中的插件设置，然后进行搜索：输入内容：picgo-plugin-gitee，你会发现，有两个插件，我选择的是第一种，第二种我后面会说到。然后选择图中所指向的插件。<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/3333..png"></p>
+<li><p>接着打开软件，点击软件界面中的插件设置，然后进行搜索：输入内容：picgo-plugin-gitee，你会发现，有两个插件，我选择的是第一种，第二种我后面会说到。然后选择图中所指向的插件。<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/3333..png"></p>
 </li>
 </ol>
-<p><img src="https://gitee.com/abigail110/blogimage/raw/master/img/49494.png"></p>
+<p><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/49494.png"></p>
 <h2 id="属性介绍："><a href="#属性介绍：" class="headerlink" title="属性介绍："></a>属性介绍：</h2><ul>
 <li>repo：填写格式 用户名 / 仓库名</li>
 <li>branch：仓库分支，选择默认的 master 即可</li>
 <li>token：上面已经介绍过了，就是生成的私人令牌</li>
 <li>path：图片存储路径</li>
 <li>customPath：需要不用填写，这个就是你提交图片时显示消息的格式，可以看下面的图，消息格式为 Upload 图片名 by PicGo</li>
-<li>customUrl：不需要填写<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/5656=.png"><br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/5656-.png"></li>
+<li>customUrl：不需要填写<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/5656=.png"><br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/5656-.png"></li>
 </ul>
 <p>##每次只要点击一下就可以复制路径了,特别特别方便,是这段时间我使用过最好使的工具🔧,自己用简直不要太方便了,啊啊啊</p>
 ]]></content>
+      <categories>
+        <category>前端优化</category>
+      </categories>
+      <tags>
+        <tag>前端优化</tag>
+        <tag>PicGo</tag>
+      </tags>
   </entry>
   <entry>
     <title>基于vue的简易Todo-List</title>
@@ -145,39 +158,80 @@
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">//获取本地数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">dataName</span>) </span>{</span><br><span class="line">  <span class="comment">// localStorge为window内置属性，用于在浏览器存储本地信息</span></span><br><span class="line">  <span class="comment">// 该数据除非手动删除，否则会一直存在</span></span><br><span class="line">  <span class="comment">// let data = localStorage.getItem("todoList") //取值</span></span><br><span class="line">  <span class="keyword">let</span> data = <span class="built_in">localStorage</span>.getItem(dataName) <span class="comment">//取值</span></span><br><span class="line">  <span class="keyword">if</span> (data !== <span class="literal">null</span>) {</span><br><span class="line">    <span class="comment">//ES6将变量作为键→[变量名]</span></span><br><span class="line">    <span class="comment">// return JSON.parse(data).[dataName] //将数据转换为json</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(data)</span><br><span class="line">  } <span class="keyword">else</span> {</span><br><span class="line">    <span class="keyword">return</span> []</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存本地数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveData</span>(<span class="params">data, dataName</span>) </span>{</span><br><span class="line">  <span class="comment">//JSON.stringify()将json数据转换为字符串</span></span><br><span class="line">  <span class="built_in">localStorage</span>.setItem(dataName, <span class="built_in">JSON</span>.stringify(data)) <span class="comment">//设值    </span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//删除数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteData</span>(<span class="params">index, dataName</span>) </span>{</span><br><span class="line">  <span class="comment">//获取本地数据</span></span><br><span class="line">  <span class="keyword">let</span> data = getData(dataName)</span><br><span class="line">  <span class="comment">// let index = index //获取索引号</span></span><br><span class="line">  <span class="comment">//改本地数据（删除数据）</span></span><br><span class="line">  data.splice(index, <span class="number">1</span>)</span><br><span class="line">  <span class="comment">//保存本地数据</span></span><br><span class="line">  saveData(data)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>后面就是简单的给各个组件注册事件，然后执行相关操作就可以啦</p>
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue应用</tag>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Jsdelivr/CDN加速访问速度</title>
+    <url>/2021/09/20/%E4%BD%BF%E7%94%A8Jsdelivr:CDN%E5%8A%A0%E9%80%9F%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/</url>
+    <content><![CDATA[<h1 id="CDN-加速"><a href="#CDN-加速" class="headerlink" title="CDN 加速"></a>CDN 加速</h1><blockquote>
+<p>CDN 的全称是 Content Delivery Network，即内容分发网络。CDN 是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN 的关键技术主要有内容存储和分发技术。—— 百度百科</p>
+</blockquote>
+<p>最近腾讯cos桶欠费啦,非常非常不划算了,CDN在腾讯上面收费很贵,天天发消息催着我交钱交钱,突然意识到是时候该白嫖了😊😊😊</p>
+<p><strong>开始介绍搭建</strong><br>放在 Github 的资源在国内加载速度比较慢，因此需要使用 CDN 加速来优化网站打开速度，jsDelivr + Github 便是免费且好用的 CDN，非常适合博客网站使用。<br>一般CDN要收费的,但是好在有免费版本!!!!是和 Github的联名款,让我们愉快的白嫖CDN后缀的资源吧</p>
+<ol>
+<li>首先新建 GitHub 仓库</li>
+</ol>
+<p><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/rfrr.png" alt="新建 GitHub 仓库"></p>
+<ol start="2">
+<li>本地新建一个文件夹，文件夹名称自定义，然后进入文件夹，在文件夹内依次执行下面的命令<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin 你新建仓库的HTTP或者SSH地址链接</span><br><span class="line">git push -u origin main <span class="comment">#将仓库拉取到本地文件夹</span></span><br></pre></td></tr></tbody></table></figure>
+接着把你要上传的文件放进这个文件夹内（可以多层目录）</li>
+</ol>
+<p> <strong>注：jsDelivr 不支持加载超过 20M 的资源,要不然不免费了!</strong><br> <img src="https://gitee.com/abigailcui/blogimage/raw/master/img/4545.png" alt="我的资料"></p>
+<p> 然后再依次执行下面的命令：<br>  </p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git add .    <span class="comment">#(.表示所有的)</span></span><br><span class="line">git commit -m <span class="string">'添加文件内容描述'</span> </span><br><span class="line">git push origin main  <span class="comment">#将本地仓库文件推送到GitHub新建的仓库</span></span><br></pre></td></tr></tbody></table></figure><br> 然后去 GitHub 仓库查看效果即可。<p></p>
+<ol start="3">
+<li>发布仓库<br>点击 release，进行版本的发布。</li>
+</ol>
+<h1 id="通过-jsdelivr-引用资源"><a href="#通过-jsdelivr-引用资源" class="headerlink" title="通过 jsdelivr 引用资源"></a>通过 jsdelivr 引用资源</h1><p>使用Jsdelivr给了免费的链接🔗直接连<br>使用方法：<a href="https://cdn.jsdelivr.net/gh/">https://cdn.jsdelivr.net/gh/</a> 你的用户名 / 你的仓库名 @发布的版本号 / 文件路径<br>例如：<a href="https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/medias/avatar.jpg">https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/medias/avatar.jpg</a><br><a href="https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/css/gallery.css">https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/css/gallery.css</a><br><a href="https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/loading4.gif">https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/loading4.gif</a></p>
+<ol start="4">
+<li>如果以后在向 cdn 库里添加或者修改文件，首先把文件添加到本地仓库，然后依次在本地 cdn 仓库文件位置执行以下命令：</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git pull origin main  <span class="comment">#拉取远程仓库到本地</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'描述内容'</span></span><br><span class="line">git push origin main <span class="comment"># 推送到GitHub仓库</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>]]></content>
+      <categories>
+        <category>前端优化</category>
+      </categories>
+      <tags>
+        <tag>前端优化</tag>
+        <tag>CDN</tag>
+      </tags>
   </entry>
   <entry>
     <title>使用github+Coding+码云部署网站</title>
     <url>/2021/09/20/%E4%BD%BF%E7%94%A8GitHub+%E7%A0%81%E4%BA%91+Coding%E6%9D%A5%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<h1 id="部署之前"><a href="#部署之前" class="headerlink" title="部署之前"></a>部署之前</h1><ol>
-<li><p>由于我吧网站用DNS解析解读我的github个人主页仓库,现在网不是特别稳定,自己的博客当然自己可以访问,<br>但是国内的github不同地域访问方式不知道为什么很奇怪有的登的上有的登不上<br>那这样我的网站性能就不太好啦,给上个截图看看吧<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/2323.png"></p>
+<li><p>由于我吧网站用DNS解析解读我的github个人主页仓库,现在网不是特别稳定,自己的博客当然自己可以访问,<br>但是国内的github不同地域访问方式不知道为什么很奇怪有的登的上有的登不上<br>那这样我的网站性能就不太好啦,给上个截图看看吧<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/2323.png"></p>
 </li>
 <li><p>要不就是https解析不出来(呜呜呜白买域名SSL数字证书了)</p>
 </li>
 </ol>
-<p><img src="https://gitee.com/abigail110/blogimage/raw/master/img/343434.png"></p>
+<p><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/343434.png"></p>
 <p>真的很搞笑,我去查我的服务器居然在菲律宾😂,这样的话我的网站有种那种菲律宾小赌场🎰的赶脚~</p>
 <p>#GitHub部署<br>博客关联命令行</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: </span><br><span class="line">    github: git@github.com:AbigailCui/AbigailCui.github.io.git,main</span><br></pre></td></tr></tbody></table></figure>
 <p>这个应该大家都会</p>
 <p>#gitee部署<br>博客关联命令行</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">eploy: </span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: </span><br><span class="line">    gitee: git@gitee.com:abigail110/abigail110.git,master</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="若github跟gitee主分支不一样-要用逗号直接隔开就行啦"><a href="#若github跟gitee主分支不一样-要用逗号直接隔开就行啦" class="headerlink" title="若github跟gitee主分支不一样,要用逗号直接隔开就行啦"></a>若github跟gitee主分支不一样,要用逗号直接隔开就行啦</h2><h2 id="申请gitee博客pages需要点击gitee-pages服务申请-大概一个工作日就下来了"><a href="#申请gitee博客pages需要点击gitee-pages服务申请-大概一个工作日就下来了" class="headerlink" title="申请gitee博客pages需要点击gitee pages服务申请,大概一个工作日就下来了"></a>申请gitee博客pages需要点击gitee pages服务申请,大概一个工作日就下来了</h2><p><img src="https://gitee.com/abigail110/blogimage/raw/master/img/45535.png"><br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/98987.png"><br>最边上就是我的网址,到时候可以直接关联访问即可,后面会写全部挂载,重点我们来看一下Coding</p>
+<h2 id="若github跟gitee主分支不一样-要用逗号直接隔开就行啦"><a href="#若github跟gitee主分支不一样-要用逗号直接隔开就行啦" class="headerlink" title="若github跟gitee主分支不一样,要用逗号直接隔开就行啦"></a>若github跟gitee主分支不一样,要用逗号直接隔开就行啦</h2><h2 id="申请gitee博客pages需要点击gitee-pages服务申请-大概一个工作日就下来了"><a href="#申请gitee博客pages需要点击gitee-pages服务申请-大概一个工作日就下来了" class="headerlink" title="申请gitee博客pages需要点击gitee pages服务申请,大概一个工作日就下来了"></a>申请gitee博客pages需要点击gitee pages服务申请,大概一个工作日就下来了</h2><p><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/45535.png"><br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/98987.png"><br>最边上就是我的网址,到时候可以直接关联访问即可,后面会写全部挂载,重点我们来看一下Coding</p>
 <h1 id="Coding-net部署"><a href="#Coding-net部署" class="headerlink" title="Coding.net部署"></a>Coding.net部署</h1><p>听说Coding.net直接吧东西放腾讯云中,会有专门的服务器对接,仓库更大容量,也有专门为hexo<br>设计的主页,到时候访问我的网就直接从Coding.net,存储的东西在腾讯云存储桶cos里面</p>
 <blockquote>
 <p>在部署之前不知道怎么怎么麻烦,网上教程完全没有对应的,然后看了一下这个Coding.net据说还在<br>试营业那种公测,部署可以说非常艰辛,查了一下原来是Coding.net经常大更新.gitee,github的部署教程<br>非常常见,我就不写啦.</p>
 </blockquote>
 <h2 id="Coding-net准备工作"><a href="#Coding-net准备工作" class="headerlink" title="Coding.net准备工作"></a>Coding.net准备工作</h2><h3 id="点击注册"><a href="#点击注册" class="headerlink" title="点击注册"></a>点击注册</h3><p><a href="https://coding.net,可以点击注册一下/">https://coding.net,可以点击注册一下</a><br><a href="https://e.coding.net/register">https://e.coding.net/register</a></p>
-<p><img src="https://gitee.com/abigail110/blogimage/raw/master/img/67564.png"></p>
-<h3 id="设置公钥"><a href="#设置公钥" class="headerlink" title="设置公钥"></a>设置公钥</h3><p><img src="https://gitee.com/abigail110/blogimage/raw/master/img/585858.png"><br>我选择跟自己名字有关的这样好记很多</p>
+<p><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/67564.png"></p>
+<h3 id="设置公钥"><a href="#设置公钥" class="headerlink" title="设置公钥"></a>设置公钥</h3><p><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/585858.png"><br>我选择跟自己名字有关的这样好记很多</p>
 <ol>
-<li><p>点击+创建项目<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/657575.png"></p>
+<li><p>点击+创建项目<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/657575.png"></p>
 </li>
-<li><p>选择创建第一种项目<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/454--.png"><br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/898985.png"><br>创建的时候名字随便啦,备注记得写个人网站啥的.</p>
+<li><p>选择创建第一种项目<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/454--.png"><br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/898985.png"><br>创建的时候名字随便啦,备注记得写个人网站啥的.</p>
 </li>
-<li><p>然后选择个人设置我们来设置一下SSH<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/TTTT.png"></p>
+<li><p>然后选择个人设置我们来设置一下SSH<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/TTTT.png"></p>
 </li>
-<li><p>在个人账户里<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/67676555.png"><br>这个公钥是github+Coding+码云都是一样的,我们要粘贴一样的公钥这样才能到时候push<br>的时候一下子全推上去</p>
+<li><p>在个人账户里<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/67676555.png"><br>这个公钥是github+Coding+码云都是一样的,我们要粘贴一样的公钥这样才能到时候push<br>的时候一下子全推上去</p>
 </li>
 <li><p><strong>查看公钥</strong></p>
 <ul>
@@ -193,45 +247,26 @@
 </li>
 </ol>
 <h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ol>
-<li>点击个人项目进入<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/4545322.png"></li>
-<li>点击创建仓库<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/454545433.png"></li>
-<li>设置仓库记得最好跟项目名字保持一致,这样好记<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/5657444.png"></li>
-<li>推送<br><img src="https://gitee.com/abigail110/blogimage/raw/master/img/400000.png"></li>
+<li>点击个人项目进入<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/4545322.png"></li>
+<li>点击创建仓库<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/454545433.png"></li>
+<li>设置仓库记得最好跟项目名字保持一致,这样好记<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/5657444.png"></li>
+<li>推送<br><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/400000.png"></li>
 </ol>
   <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">deploy: </span><br><span class="line"> <span class="built_in">type</span>: git</span><br><span class="line"> repo: </span><br><span class="line">   github: git@github.com:AbigailCui/AbigailCui.github.io.git,main</span><br><span class="line">   gitee: git@gitee.com:abigail110/abigail110.git,master</span><br><span class="line">   coding: git@e.coding.net:abigailcui/abigailcui/abigailcui.git,master</span><br></pre></td></tr></tbody></table></figure>
 <p>想这样子的码记得先绑定你的网站再进行推送</p>
-<h3 id="创建静态网站"><a href="#创建静态网站" class="headerlink" title="创建静态网站"></a>创建静态网站</h3><h4 id="这一步很关键"><a href="#这一步很关键" class="headerlink" title="这一步很关键"></a>这一步很关键</h4><p><img src="https://gitee.com/abigail110/blogimage/raw/master/img/5000003.png"><br>不知道为什么这个平台老变来变去的 一会这个名字那个名字原来现在改名字叫网站托管了,不是之前的静态网站,<br>所以小伙伴第一次用估计会蒙圈</p>
-<h4 id="绑定腾讯云"><a href="#绑定腾讯云" class="headerlink" title="绑定腾讯云"></a>绑定腾讯云</h4><p><img src="https://gitee.com/abigail110/blogimage/raw/master/img/564646.png"><br>之前是直接就在上面运行了,现在这个变成必须先绑定腾讯云,没有的同学需要注册一下,相当于是拿腾讯当在线存储桶,<br>不过没有免费的午餐🥣,到时候就要六个月后收费了.按理说这个Coding.net是最快的,但是也是唯一以后要收费的.<br>个人感觉性价比很低,如果没有特殊优化要求,上面的双线绑定就可以了.</p>
+<h3 id="创建静态网站"><a href="#创建静态网站" class="headerlink" title="创建静态网站"></a>创建静态网站</h3><h4 id="这一步很关键"><a href="#这一步很关键" class="headerlink" title="这一步很关键"></a>这一步很关键</h4><p><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/5000003.png"><br>不知道为什么这个平台老变来变去的 一会这个名字那个名字原来现在改名字叫网站托管了,不是之前的静态网站,<br>所以小伙伴第一次用估计会蒙圈</p>
+<h4 id="绑定腾讯云"><a href="#绑定腾讯云" class="headerlink" title="绑定腾讯云"></a>绑定腾讯云</h4><p><img src="https://gitee.com/abigailcui/blogimage/raw/master/img/564646.png"><br>之前是直接就在上面运行了,现在这个变成必须先绑定腾讯云,没有的同学需要注册一下,相当于是拿腾讯当在线存储桶,<br>不过没有免费的午餐🥣,到时候就要六个月后收费了.按理说这个Coding.net是最快的,但是也是唯一以后要收费的.<br>个人感觉性价比很低,如果没有特殊优化要求,上面的双线绑定就可以了.</p>
 <h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><p>一定要选择静态网站,千万别选专门的hexo,然后自动部署,这里很坑,因为只能选香港服务器,这样的话服务器属于境外,<br>到时候DNS解析还是默认,那就是我菲律宾的github使得上劲,如果要选国内就必须备案(就需要自己搭服务器),<br>要不然就失去coding的存在意义,因为她非常麻烦所以不划算</p>
 <h1 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h1><p>有机会如果客流量大的话会用coding的,现在暂时的线路是白嫖…就是境内(码云),境外github</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>使用Jsdelivr/CDN加速访问速度</title>
-    <url>/2021/09/20/%E4%BD%BF%E7%94%A8Jsdelivr:CDN%E5%8A%A0%E9%80%9F%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/</url>
-    <content><![CDATA[<h1 id="CDN-加速"><a href="#CDN-加速" class="headerlink" title="CDN 加速"></a>CDN 加速</h1><blockquote>
-<p>CDN 的全称是 Content Delivery Network，即内容分发网络。CDN 是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN 的关键技术主要有内容存储和分发技术。—— 百度百科</p>
-</blockquote>
-<p>最近腾讯cos桶欠费啦,非常非常不划算了,CDN在腾讯上面收费很贵,天天发消息催着我交钱交钱,突然意识到是时候该白嫖了😊😊😊</p>
-<p><strong>开始介绍搭建</strong><br>放在 Github 的资源在国内加载速度比较慢，因此需要使用 CDN 加速来优化网站打开速度，jsDelivr + Github 便是免费且好用的 CDN，非常适合博客网站使用。<br>一般CDN要收费的,但是好在有免费版本!!!!是和 Github的联名款,让我们愉快的白嫖CDN后缀的资源吧</p>
-<ol>
-<li>首先新建 GitHub 仓库</li>
-</ol>
-<p><img src="https://gitee.com/abigail110/blogimage/raw/master/img/rfrr.png" alt="新建 GitHub 仓库"></p>
-<ol start="2">
-<li>本地新建一个文件夹，文件夹名称自定义，然后进入文件夹，在文件夹内依次执行下面的命令<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin 你新建仓库的HTTP或者SSH地址链接</span><br><span class="line">git push -u origin main <span class="comment">#将仓库拉取到本地文件夹</span></span><br></pre></td></tr></tbody></table></figure>
-接着把你要上传的文件放进这个文件夹内（可以多层目录）</li>
-</ol>
-<p> <strong>注：jsDelivr 不支持加载超过 20M 的资源,要不然不免费了!</strong><br> <img src="https://gitee.com/abigail110/blogimage/raw/master/img/4545.png" alt="我的资料"></p>
-<p> 然后再依次执行下面的命令：<br>  </p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git add .    <span class="comment">#(.表示所有的)</span></span><br><span class="line">git commit -m <span class="string">'添加文件内容描述'</span> </span><br><span class="line">git push origin main  <span class="comment">#将本地仓库文件推送到GitHub新建的仓库</span></span><br></pre></td></tr></tbody></table></figure><br> 然后去 GitHub 仓库查看效果即可。<p></p>
-<ol start="3">
-<li>发布仓库<br>点击 release，进行版本的发布。</li>
-</ol>
-<h1 id="通过-jsdelivr-引用资源"><a href="#通过-jsdelivr-引用资源" class="headerlink" title="通过 jsdelivr 引用资源"></a>通过 jsdelivr 引用资源</h1><p>使用Jsdelivr给了免费的链接🔗直接连<br>使用方法：<a href="https://cdn.jsdelivr.net/gh/">https://cdn.jsdelivr.net/gh/</a> 你的用户名 / 你的仓库名 @发布的版本号 / 文件路径<br>例如：<a href="https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/medias/avatar.jpg">https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/medias/avatar.jpg</a><br><a href="https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/css/gallery.css">https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/css/gallery.css</a><br><a href="https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/loading4.gif">https://cdn.jsdelivr.net/gh/AbigailCui/cdn/source/loading4.gif</a></p>
-<ol start="4">
-<li>如果以后在向 cdn 库里添加或者修改文件，首先把文件添加到本地仓库，然后依次在本地 cdn 仓库文件位置执行以下命令：</li>
-</ol>
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git pull origin main  <span class="comment">#拉取远程仓库到本地</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'描述内容'</span></span><br><span class="line">git push origin main <span class="comment"># 推送到GitHub仓库</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>]]></content>
+      <categories>
+        <category>前端优化</category>
+      </categories>
+      <tags>
+        <tag>前端优化</tag>
+        <tag>网站部署</tag>
+        <tag>Coding</tag>
+      </tags>
   </entry>
   <entry>
     <title>秘密花园</title>
@@ -556,6 +591,12 @@
 <p>那么，你相当于改了exports的值，那么它就会与module.exports分道扬镳，它的值也不会等于module导出的值</p>
 <p>所以，为了保险起见，新手最好使用module.exports导出你要导出的内容，避免错误</p>
 ]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+      </tags>
   </entry>
   <entry>
     <title>Node.js笔记(2)</title>
@@ -748,6 +789,12 @@
 
 
 ]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+      </tags>
   </entry>
   <entry>
     <title>初识Vuex</title>
@@ -1056,6 +1103,13 @@
 
 
 ]]></content>
+      <categories>
+        <category>Vuex</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Vuex</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue基础6-路由_vant组件库使用</title>
@@ -1617,6 +1671,12 @@
 <p>总结: 改变浏览器url的hash值, JS监听到hash值改变, 把对应的组件显示到同一个挂载点</p>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
     <title>初识webpack</title>
@@ -2062,6 +2122,12 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>webpack</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+      </tags>
   </entry>
   <entry>
     <title>web安全</title>
@@ -2323,12 +2389,18 @@
 <h5 id="可执行与可写权限分离"><a href="#可执行与可写权限分离" class="headerlink" title="可执行与可写权限分离"></a>可执行与可写权限分离</h5><p>包含可执行脚本的目录禁止用户写入，用户写入文件的目录禁止执行</p>
 <h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><h4 id="什么是SQL"><a href="#什么是SQL" class="headerlink" title="什么是SQL"></a>什么是SQL</h4><p>SQL是一种数据库查询语言</p>
 ]]></content>
+      <categories>
+        <category>前端优化</category>
+      </categories>
+      <tags>
+        <tag>前端优化</tag>
+      </tags>
   </entry>
   <entry>
     <title>实践前端优化策略之我的hexo博客</title>
     <url>/2021/09/24/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5%E4%B9%8B%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<blockquote>
-<p>前天看了很多篇前端优化性能策略,很多我没有用过的东西,借此机会好好实践一下吧原理应用到实践中!<br><a href="https://www.abigailcui.com/2021/09/21/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB/">我的前端优化</a></p>
+<p>前天看了很多篇前端优化性能策略,很多我没有用过的东西,借此机会好好实践一下吧原理应用到实践中!<br><a href="https://www.abigailcui.com/2021/09/19/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB/">我的前端优化</a></p>
 </blockquote>
 <h1 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h1><blockquote>
 <p>小课堂：图片加载方式有两种，一个是预加载，另一个就是懒加载，那你了解什么是预加载和懒加载吗？下面来回顾学习一下。<br>参考: <a href="https://blog.csdn.net/alex8046/article/details/50388050">图片预加载与图片懒加载（缓载）的区别与实现</a></p>
@@ -2391,13 +2463,19 @@
 <p>请看我的另一篇文章 <a href="https://www.abigailcui.com/2021/09/20/%E4%BD%BF%E7%94%A8Jsdelivr:CDN%E5%8A%A0%E9%80%9F%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/">使用Jsdelivr:CDN加速博客访问速度</a></p>
 </blockquote>
 <h1 id="搭建图床"><a href="#搭建图床" class="headerlink" title="搭建图床"></a>搭建图床</h1><blockquote>
-<p>请看我的另一篇文章 <a href="https://www.abigailcui.com/2021/09/23/PicGo+Gitee%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">PicGo+Gitee搭建图床</a></p>
+<p>请看我的另一篇文章 <a href="https://www.abigailcui.com/2021/09/20/%E4%BD%BF%E7%94%A8GitHub+%E7%A0%81%E4%BA%91+Coding%E6%9D%A5%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99/">PicGo+Gitee搭建图床</a></p>
 </blockquote>
 <h1 id="三线部署个人网站"><a href="#三线部署个人网站" class="headerlink" title="三线部署个人网站"></a>三线部署个人网站</h1><blockquote>
 <p>请看我的另一篇文章 <a href="https://www.abigailcui.com/2021/09/20/%E4%BD%BF%E7%94%A8GitHub+%E7%A0%81%E4%BA%91+Coding%E6%9D%A5%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99/">使用GitHub+码云+Coding来部署网站</a></p>
 </blockquote>
 <h1 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h1><p>这是我通过前端优化所可以学习到的知识,以后会有更多好点子了再来更新…见笑啦😜</p>
 ]]></content>
+      <categories>
+        <category>前端优化</category>
+      </categories>
+      <tags>
+        <tag>前端优化</tag>
+      </tags>
   </entry>
   <entry>
     <title>通用设计模式</title>
@@ -2596,6 +2674,13 @@
 <h3 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h3><p>使用一层中介者，来处理多对多的逻辑关系。</p>
 <p>mvc模式中的controller</p>
 ]]></content>
+      <categories>
+        <category>通用设计模式</category>
+      </categories>
+      <tags>
+        <tag>前端总结</tag>
+        <tag>通用设计模式</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue基础1-vue脚手架&amp;基础API</title>
@@ -3161,6 +3246,12 @@
 
 <p><img src="/2021/05/14/vue%E5%9F%BA%E7%A1%801-vue%E8%84%9A%E6%89%8B%E6%9E%B6&amp;%E5%9F%BA%E7%A1%80API/4.9.1_%E7%BB%83%E4%B9%A0_%E9%80%89%E6%8B%A9%E5%96%9C%E6%AC%A2%E7%9A%84%E6%A0%8F%E7%9B%AE.gif" alt="4.9.1_练习_选择喜欢的栏目"></p>
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue基础2-基础API_计算属性_过滤器_侦听器</title>
@@ -3713,6 +3804,12 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id="app"&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;span&gt;姓名:&lt;/span&gt;</span><br><span class="line">      &lt;input type="text" /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;span&gt;年龄:&lt;/span&gt;</span><br><span class="line">      &lt;input type="number" /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;span&gt;性别:&lt;/span&gt;</span><br><span class="line">      &lt;select &gt;</span><br><span class="line">        &lt;option value="男"&gt;男&lt;/option&gt;</span><br><span class="line">        &lt;option value="女"&gt;女&lt;/option&gt;</span><br><span class="line">      &lt;/select&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button &gt;添加/修改&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;table</span><br><span class="line">        border="1"</span><br><span class="line">        cellpadding="10"</span><br><span class="line">        cellspacing="0"</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">          &lt;th&gt;序号&lt;/th&gt;</span><br><span class="line">          &lt;th&gt;姓名&lt;/th&gt;</span><br><span class="line">          &lt;th&gt;年龄&lt;/th&gt;</span><br><span class="line">          &lt;th&gt;性别&lt;/th&gt;</span><br><span class="line">          &lt;th&gt;操作&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr &gt;</span><br><span class="line">          &lt;td&gt;&lt;/td&gt;</span><br><span class="line">          &lt;td&gt;&lt;/td&gt;</span><br><span class="line">          &lt;td&gt;&lt;/td&gt;</span><br><span class="line">          &lt;td&gt;&lt;/td&gt;</span><br><span class="line">          &lt;td&gt;</span><br><span class="line">            &lt;button &gt;删除&lt;/button&gt;</span><br><span class="line">            &lt;button &gt;编辑&lt;/button&gt;</span><br><span class="line">          &lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">      &lt;/table&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  </span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue基础4-生命周期_组件进阶</title>
@@ -4240,6 +4337,12 @@
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="string">"status"</span>: <span class="number">201</span>, <span class="comment">// 后台返回数据逻辑层的状态码, 201代表后台已经新增加了一个资源</span></span><br><span class="line">    <span class="string">"data"</span>: {</span><br><span class="line">        <span class="string">"author"</span>: <span class="string">"施大神"</span></span><br><span class="line">        <span class="string">"bookname"</span>: <span class="string">"水浒传2"</span></span><br><span class="line">        <span class="string">"id"</span>: <span class="number">41</span></span><br><span class="line">        <span class="string">"publisher"</span>: <span class="string">"未来出版社"</span></span><br><span class="line">    }</span><br><span class="line">    <span class="string">"msg"</span>: <span class="string">"添加图书成功"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue基础5-动态组件_插槽_自定义指令</title>
@@ -4709,6 +4812,12 @@
 <figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'姓名'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'text'</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'密码'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'password'</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'性别'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'radio'</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"男"</span>/&gt;</span>男</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'radio'</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"女"</span>/&gt;</span>女</span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'爱好'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'checkbox'</span> <span class="attr">value</span>=<span class="string">"抽烟"</span> /&gt;</span>抽烟</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'checkbox'</span> <span class="attr">value</span>=<span class="string">"喝酒"</span> /&gt;</span>喝酒</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'checkbox'</span> <span class="attr">value</span>=<span class="string">"烫头"</span> /&gt;</span>烫头</span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'来自于'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"北京"</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"天津"</span>&gt;</span>天津<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"南京"</span>&gt;</span>南京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    new Vue({</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">        el: "#app",</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">        components: {</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">            childCom: { // 组件名字</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                props: {</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                    title: {</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                        type: String</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                    }</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                },</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                template: `<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"border: 1px solid black;"</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><span class="template-variable">{{<span class="name">title</span>}}</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars"><span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">            }</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">        }</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    })</span></span></span><br><span class="line"><span class="xml"><span class="handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue应用1—用vant和node实现网易云音乐案例</title>
@@ -5069,6 +5178,13 @@
 </ul>
 <h2 id="今日作业"><a href="#今日作业" class="headerlink" title="今日作业"></a>今日作业</h2><p>把课上的案例-从0再来一遍, 为下阶段移动端项目铺垫</p>
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue应用</tag>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
     <title>我的前端保命手册-2</title>
@@ -5400,6 +5516,12 @@
 
 
 ]]></content>
+      <categories>
+        <category>前端总结</category>
+      </categories>
+      <tags>
+        <tag>前端总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue基础3-vue组件_组件通信_todo案例</title>
@@ -5943,6 +6065,12 @@
 <p>无vue代码的标签(==可以复制==)</p>
 <figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>测试题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">subject</span> &gt;</span><span class="tag">&lt;/<span class="name">subject</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">flag</span>&gt;</span><span class="tag">&lt;/<span class="name">flag</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> {</span></span><br><span class="line"><span class="javascript">  </span></span><br><span class="line"><span class="javascript">};</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-tag">body</span> {</span></span><br><span class="line"><span class="css">  <span class="attribute">background-color</span>: <span class="number">#eee</span>;</span></span><br><span class="line"><span class="css">}</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-id">#app</span> {</span></span><br><span class="line"><span class="css">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">500px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">margin</span>: <span class="number">50px</span> auto;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-shadow</span>: <span class="number">3px</span> <span class="number">3px</span> <span class="number">3px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">2em</span>;</span></span><br><span class="line"><span class="css">}</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
     <title>前端性能优化</title>
@@ -6992,6 +7120,13 @@
 <li>特别谢鸣博学谷、codewhy、b站!!!!我会努力的!!!</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>前端优化</category>
+      </categories>
+      <tags>
+        <tag>前端优化</tag>
+        <tag>前端总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue应用2-vue移动端-头条demo</title>
@@ -8856,6 +8991,12 @@
 
 
 ]]></content>
+      <categories>
+        <category>前端优化</category>
+      </categories>
+      <tags>
+        <tag>前端优化</tag>
+      </tags>
   </entry>
   <entry>
     <title>我的前端保命手册-1</title>
@@ -11694,6 +11835,12 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>前端总结</category>
+      </categories>
+      <tags>
+        <tag>前端总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue应用3—HR-saas中台系统</title>
@@ -14302,5 +14449,12 @@
 <p>注意：这里之所以用了<strong>pathRewrite</strong>，是因为生产环境的请求基础地址是 <strong>/prod-api</strong>，需要将该地址去掉</p>
 <p>此时，项目就可以跨域访问了！</p>
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue应用</tag>
+        <tag>Vue</tag>
+      </tags>
   </entry>
 </search>
