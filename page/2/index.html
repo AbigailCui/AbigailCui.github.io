@@ -45,7 +45,7 @@
     }
   },
   isPhotoFigcaption: false,
-  islazyload: false,
+  islazyload: true,
   isanchor: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'Abigail Cui的小站',
@@ -53,7 +53,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2021-09-22 20:57:11'
+  postUpdate: '2021-09-24 19:27:56'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -66,7 +66,7 @@
   #post-meta time {
     display: inline !important
   }
-</style></noscript><div class="aplayer" data-id="720305850" data-server="netease" data-type="playlist" data-fixed="true" data-listFolded="false" data-order="random" data-preload="none"></div><link rel="stylesheet" href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css"><script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script><script>(win=>{
+</style></noscript><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><script>(win=>{
     win.saveToLocal = {
       set: function setWithExpiry(key, value, ttl) {
         if (ttl === 0) return
@@ -147,9 +147,269 @@
       }
     }
     detectApple()
-    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0">
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css"><style type="text/css">#universe{display: block;position: fixed;margin: 0;padding: 0;border: 0;outline: 0;left: 0;top: 0;width: 100%;height: 100%;pointer-events: none;z-index: -1;}</style><style type="text/css">#toggle-sidebar {bottom: 80px}</style><style type="text/css">#toggle-sidebar {left:100px}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><!-- hexo injector head_end end --><style type="text/css" lang="css">
+    #loading-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        width: 100vw;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #FFF;
+        text-align: center;
+        /* loader页面消失采用渐隐的方式*/
+        -webkit-transition: opacity 1s ease;
+        -moz-transition: opacity 1s ease;
+        -o-transition: opacity 1s ease;
+        transition: opacity 1s ease;
+    }
+    .loading-image{
+        width: 120px;
+        height: 50px;
+        transform: translate(-50%);
+    }
+    
+    .loading-image div:nth-child(2) {
+        -webkit-animation: pacman-balls 1s linear 0s infinite;
+        animation: pacman-balls 1s linear 0s infinite
+    }
+
+    .loading-image div:nth-child(3) {
+        -webkit-animation: pacman-balls 1s linear .33s infinite;
+        animation: pacman-balls 1s linear .33s infinite
+    }
+
+    .loading-image div:nth-child(4) {
+        -webkit-animation: pacman-balls 1s linear .66s infinite;
+        animation: pacman-balls 1s linear .66s infinite
+    }
+
+    .loading-image div:nth-child(5) {
+        -webkit-animation: pacman-balls 1s linear .99s infinite;
+        animation: pacman-balls 1s linear .99s infinite
+    }
+    
+   .loading-image div:first-of-type {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
+        animation: rotate_pacman_half_up .5s 0s infinite;
+    }
+    .loading-image div:nth-child(2) {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
+        animation: rotate_pacman_half_down .5s 0s infinite;
+        margin-top: -50px;
+    }
+    @-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+    
+    @-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+    @keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+    
+   
+    .loading-image div:nth-child(3),
+    .loading-image div:nth-child(4),
+    .loading-image div:nth-child(5),
+    .loading-image div:nth-child(6){
+        background-color: #49b1f5;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        margin: 2px;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        transform: translateY(-6.25px);
+        top: 25px;
+        left: 100px;
+    }
+    .loading-text{
+        margin-bottom: 20vh;
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2rem;
+        box-sizing: border-box;
+        padding: 0 10px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    @media only screen and (max-width: 500px) {
+         .loading-text{
+            font-size: 1.5rem;
+         }
+    }
+    .fadeout {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    /* logo出现动画 */
+    @-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
+ </style>
+ <script>
+(function () {
+    const loaded = function(){
+       setTimeout(function(){
+            const loader = document.getElementById("loading-container");
+            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
+            // document.getElementById("body-wrap").style.display="flex";
+            document.getElementById("body-wrap").style.display="flex";
+            setTimeout(function(){
+                loader.style.display="none";
+            },1000); 
+        },1000);//强制显示loading page 1s  
+    };
+    loaded();
+})()
+ </script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/todo-List/index.html#/myday"><i class="fa-fw fas fa-clock"></i><span> ToDo-List</span></a></li><li><a class="site-page child" href="/te/"><i class="fa-fw fas fa-envelope"></i><span> 疫情地图</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> 小游戏</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/catch-cat-master/index.html"><i class="fa-fw fas fa-certificate"></i><span> 堵住黑猫!</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://daxigua.guole.fun/"><i class="fa-fw fas fa-asterisk"></i><span> 合成大🍉</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog-game.vercel.app/znm/"><i class="fa-fw fas fa-podcast"></i><span> 解压六边形</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Abigail Cui的小站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/todo-List/index.html#/myday"><i class="fa-fw fas fa-clock"></i><span> ToDo-List</span></a></li><li><a class="site-page child" href="/te/"><i class="fa-fw fas fa-envelope"></i><span> 疫情地图</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> 小游戏</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/catch-cat-master/index.html"><i class="fa-fw fas fa-certificate"></i><span> 堵住黑猫!</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://daxigua.guole.fun/"><i class="fa-fw fas fa-asterisk"></i><span> 合成大🍉</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog-game.vercel.app/znm/"><i class="fa-fw fas fa-podcast"></i><span> 解压六边形</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Abigail Cui的小站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%803-vue%E7%BB%84%E4%BB%B6_%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1_todo%E6%A1%88%E4%BE%8B/" title="vue基础3-vue组件_组件通信_todo案例">     <img class="post_bg" src="/2021/05/14/vue%E5%9F%BA%E7%A1%803-vue%E7%BB%84%E4%BB%B6_%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1_todo%E6%A1%88%E4%BE%8B/ArcGIS.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础3-vue组件_组件通信_todo案例"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%803-vue%E7%BB%84%E4%BB%B6_%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1_todo%E6%A1%88%E4%BE%8B/" title="vue基础3-vue组件_组件通信_todo案例">vue基础3-vue组件_组件通信_todo案例</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-14T02:04:15.000Z" title="发表于 2021-05-14 10:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">知识点自测
+</head>
+ <div id="loading-container">
+     <p class="loading-text"> 全员加速中 . . . </p> 
+     <div class="loading-image">
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div> 
+         <div></div>
+     </div>
+ </div><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/todo-List/index.html#/myday"><i class="fa-fw fas fa-clock"></i><span> ToDo-List</span></a></li><li><a class="site-page child" href="/te/"><i class="fa-fw fas fa-envelope"></i><span> 疫情地图</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> 小游戏</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/catch-cat-master/index.html"><i class="fa-fw fas fa-certificate"></i><span> 堵住黑猫!</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://daxigua.guole.fun/"><i class="fa-fw fas fa-asterisk"></i><span> 合成大🍉</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog-game.vercel.app/znm/"><i class="fa-fw fas fa-podcast"></i><span> 解压六边形</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Abigail Cui的小站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/todo-List/index.html#/myday"><i class="fa-fw fas fa-clock"></i><span> ToDo-List</span></a></li><li><a class="site-page child" href="/te/"><i class="fa-fw fas fa-envelope"></i><span> 疫情地图</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> 小游戏</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/catch-cat-master/index.html"><i class="fa-fw fas fa-certificate"></i><span> 堵住黑猫!</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://daxigua.guole.fun/"><i class="fa-fw fas fa-asterisk"></i><span> 合成大🍉</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog-game.vercel.app/znm/"><i class="fa-fw fas fa-podcast"></i><span> 解压六边形</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Abigail Cui的小站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%806-%E8%B7%AF%E7%94%B1_vant%E7%BB%84%E4%BB%B6%E5%BA%93%E4%BD%BF%E7%94%A8/" title="vue基础6-路由_vant组件库使用">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础6-路由_vant组件库使用"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%806-%E8%B7%AF%E7%94%B1_vant%E7%BB%84%E4%BB%B6%E5%BA%93%E4%BD%BF%E7%94%A8/" title="vue基础6-路由_vant组件库使用">vue基础6-路由_vant组件库使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-14T06:04:15.000Z" title="发表于 2021-05-14 14:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">知识点自测
+ url的组成部分都有哪些, hash值指的什么
+
+今日学习目标
+能够了解单页面应用概念和优缺点
+能够掌握vue-router路由系统使用
+能够掌握链接导航和编程式导航用法
+能够掌握路由嵌套和路由守卫
+能够掌握vant组件库基础使用
+
+1. vue路由简介和基础使用1.0 什么是路由
+目标: 设备和ip的映射关系
+
+
+
+目标: 接口和服务的映射关系
+
+
+
+目标: 路径和组件的映射关系
+
+
+1.1 为什么使用路由
+目标: 在一个页面里, 切换业务场景
+
+具体使用示例: 网易云音乐 https://music.163.com/
+单页面应用(SPA): 所有功能在一个html页面上实现
+前端路由作用: 实现业务场景切换
+优点：
+
+整体不刷新页面，用户体验更好
+
+数据传递容易, 开发效率高
+
+
+缺点：
+
+开发成本高(需要学习专门知识)
+
+首次加载会比较慢一点。不利于seo
+
+
+1.2 vue-router介绍
+目标: 如何在Vue项目中集成路由
+
+官网: https://router.vuejs.org/zh/
+vue-router模块包
+它和 Vue.js 深度集成
+可以定义 - ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%805-%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6_%E6%8F%92%E6%A7%BD_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" title="vue基础5-动态组件_插槽_自定义指令">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础5-动态组件_插槽_自定义指令"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%805-%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6_%E6%8F%92%E6%A7%BD_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" title="vue基础5-动态组件_插槽_自定义指令">vue基础5-动态组件_插槽_自定义指令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-14T05:04:15.000Z" title="发表于 2021-05-14 13:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">自测
+ ==组件创建, 注册和使用 - 伸手就来特别熟练==
+ 指令的作用
+
+目标
+能够了解组件进阶知识
+能够掌握自定义指令创建和使用
+能够完成tabbar案例的开发
+
+1. 组件进阶1.0 组件进阶 - 动态组件
+目标: 多个组件使用同一个挂载点，并动态切换，这就是动态组件
+
+需求: 完成一个注册功能页面, 2个按钮切换, 一个填写注册信息, 一个填写用户简介信息
+效果如下:
+
+
+准备被切换的 - UserName.vue / UserInfo.vue 2个组件
+
+引入到UseDynamic.vue注册
+
+准备变量来承载要显示的”组件名”
+
+设置挂载点, 使用is属性来设置要显示哪个组件
+
+点击按钮 – 修改comName变量里的”组件名”
+
+
+1234567891011121314151617181920212223242526272829303132333435&lt;template&gt;  &lt;div&gt;      &lt;button @click="comName = 'UserName'"&gt;账号密码填写&lt;/button&gt;      &lt;b ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%804-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F_%E7%BB%84%E4%BB%B6%E8%BF%9B%E9%98%B6/" title="vue基础4-生命周期_组件进阶">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础4-生命周期_组件进阶"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%804-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F_%E7%BB%84%E4%BB%B6%E8%BF%9B%E9%98%B6/" title="vue基础4-生命周期_组件进阶">vue基础4-生命周期_组件进阶</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-14T03:04:15.000Z" title="发表于 2021-05-14 11:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">自测
+ 知道window.onload的作用
+ ajax是什么, XMLHttpRequest的使用步骤
+ jQ的 $.ajax底层是什么?
+ Promise的作用
+ async和await的作用-如何和Promise配合
+ 同步异步的概念, 代码执行顺序
+ 请求和响应, 以及JSON解析能力
+ Vue基础, 组件使用, props传值, 组件通信, 计算属性使用, 对象引用类型使用
+
+学习目标
+能够说出vue组件生命周期
+能够掌握axios的使用
+能够了解$refs, $nextTick使用和name使用
+能够完成购物车案例开发
+
+1. vue生命周期1.0_人的-生命周期
+一组件从 创建 到 销毁 的整个过程就是生命周期
+
+
+Vue_生命周期
+
+1.1_钩子函数
+目标: Vue 框架内置函数，随着组件的生命周期阶段，自动执行
+
+作用: 特定的时间点，执行特定的操作
+场景: 组件创建完毕后，可以在created 生命周期函数中发起Ajax 请求，从而初始化 data 数据
+分类: 4大阶段8个方法
+
+初始化
+挂载
+更新
+销毁
+
+
+
+
+阶段
+方法名
+方法名
+
+
+
+初始化
+beforeC ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%803-vue%E7%BB%84%E4%BB%B6_%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1_todo%E6%A1%88%E4%BE%8B/" title="vue基础3-vue组件_组件通信_todo案例">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础3-vue组件_组件通信_todo案例"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%803-vue%E7%BB%84%E4%BB%B6_%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1_todo%E6%A1%88%E4%BE%8B/" title="vue基础3-vue组件_组件通信_todo案例">vue基础3-vue组件_组件通信_todo案例</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-14T02:04:15.000Z" title="发表于 2021-05-14 10:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">知识点自测
  this指向
 
 12345678910111213141516let obj = {    fn: function(){        // this指向此函数的调用者    },    fn () {        // this指向当前函数的调用者 (如果都是在vue里, this指向的都是vue实例对象)    },    fn: () =&gt; {        // this指向外层函数作用域this的值    }}obj.fn();axios().then(res =&gt; {    // 这里的this的值是多少哦?})
@@ -163,7 +423,7 @@
 能够理解vue组件概念和作用
 能够掌握封装组件能力
 能够使用组件之间通信
-能够完成to ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%802-%E5%9F%BA%E7%A1%80API_%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7_%E8%BF%87%E6%BB%A4%E5%99%A8_%E4%BE%A6%E5%90%AC%E5%99%A8_%E5%93%81%E7%89%8C%E7%AE%A1%E7%90%86%E6%A1%88%E4%BE%8B/" title="vue基础2-基础API_计算属性_过滤器_侦听器">     <img class="post_bg" src="/2021/05/14/vue%E5%9F%BA%E7%A1%802-%E5%9F%BA%E7%A1%80API_%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7_%E8%BF%87%E6%BB%A4%E5%99%A8_%E4%BE%A6%E5%90%AC%E5%99%A8_%E5%93%81%E7%89%8C%E7%AE%A1%E7%90%86%E6%A1%88%E4%BE%8B/ArcGIS.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础2-基础API_计算属性_过滤器_侦听器"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%802-%E5%9F%BA%E7%A1%80API_%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7_%E8%BF%87%E6%BB%A4%E5%99%A8_%E4%BE%A6%E5%90%AC%E5%99%A8_%E5%93%81%E7%89%8C%E7%AE%A1%E7%90%86%E6%A1%88%E4%BE%8B/" title="vue基础2-基础API_计算属性_过滤器_侦听器">vue基础2-基础API_计算属性_过滤器_侦听器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-14T01:04:15.000Z" title="发表于 2021-05-14 09:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">知识点自测
+能够完成to ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%802-%E5%9F%BA%E7%A1%80API_%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7_%E8%BF%87%E6%BB%A4%E5%99%A8_%E4%BE%A6%E5%90%AC%E5%99%A8_%E5%93%81%E7%89%8C%E7%AE%A1%E7%90%86%E6%A1%88%E4%BE%8B/" title="vue基础2-基础API_计算属性_过滤器_侦听器">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础2-基础API_计算属性_过滤器_侦听器"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%802-%E5%9F%BA%E7%A1%80API_%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7_%E8%BF%87%E6%BB%A4%E5%99%A8_%E4%BE%A6%E5%90%AC%E5%99%A8_%E5%93%81%E7%89%8C%E7%AE%A1%E7%90%86%E6%A1%88%E4%BE%8B/" title="vue基础2-基础API_计算属性_过滤器_侦听器">vue基础2-基础API_计算属性_过滤器_侦听器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-14T01:04:15.000Z" title="发表于 2021-05-14 09:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">知识点自测
  会自己定义数据结构
 
 12345"红色","red", "蓝色","blue", // 上面的数据结构, 要用1个变量来装这4个值, 用什么数据结构呢?(数组还是对象) - 对象(可映射key-&gt;value)    "小明", "小蓝", "小赵"// 上面的结构用数组比较合适
@@ -176,7 +436,7 @@
 
  数组的filter方法使用
 
-1234567let arr = [19, 29, 27, 20, 31, 32, 35];let newArr = arr.filter((val) =&gt; {return val &gt;= 30})// 数组调用.filter()方法 - 传入一个函数体 (固定格式)// 运行过程: filter会遍历数组里的每一项, 对每一项执行一次函数体(会把每个值传给形参)// 作 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%801-vue%E8%84%9A%E6%89%8B%E6%9E%B6&amp;%E5%9F%BA%E7%A1%80API/" title="vue基础1-vue脚手架&amp;基础API">     <img class="post_bg" src="/2021/05/14/vue%E5%9F%BA%E7%A1%801-vue%E8%84%9A%E6%89%8B%E6%9E%B6&amp;%E5%9F%BA%E7%A1%80API/ArcGIS.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础1-vue脚手架&amp;基础API"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%801-vue%E8%84%9A%E6%89%8B%E6%9E%B6&amp;%E5%9F%BA%E7%A1%80API/" title="vue基础1-vue脚手架&amp;基础API">vue基础1-vue脚手架&amp;基础API</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-13T20:04:15.000Z" title="发表于 2021-05-14 04:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">必安装 - vue-devtools学习, 调试vue必备之利器 - 官方提供的呦
+1234567let arr = [19, 29, 27, 20, 31, 32, 35];let newArr = arr.filter((val) =&gt; {return val &gt;= 30})// 数组调用.filter()方法 - 传入一个函数体 (固定格式)// 运行过程: filter会遍历数组里的每一项, 对每一项执行一次函数体(会把每个值传给形参)// 作 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/05/14/vue%E5%9F%BA%E7%A1%801-vue%E8%84%9A%E6%89%8B%E6%9E%B6&amp;%E5%9F%BA%E7%A1%80API/" title="vue基础1-vue脚手架&amp;基础API">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue基础1-vue脚手架&amp;基础API"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/vue%E5%9F%BA%E7%A1%801-vue%E8%84%9A%E6%89%8B%E6%9E%B6&amp;%E5%9F%BA%E7%A1%80API/" title="vue基础1-vue脚手架&amp;基础API">vue基础1-vue脚手架&amp;基础API</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-13T20:04:15.000Z" title="发表于 2021-05-14 04:04:15">2021-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">必安装 - vue-devtools学习, 调试vue必备之利器 - 官方提供的呦
 右上角-插件-谷歌访问助手-打开Chrome商店-搜索vue-devtools回车-然后添加至Chrome等待下载后自动安装-右上角显示已经添加即代表成功
 如果实在打不开谷歌商店, 换个网 / 直接用备用文件夹里的vue-devtools插件包安装到浏览器扩展程序也一样用
 ==不要图标上带橘黄色beta的==
@@ -199,7 +459,7 @@ vscode-插件补充vue文件代码高亮插件-vscode中安装
 
 如果通不过, 请记住口诀:
 
-变量是一个 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/04/22/VueX/" title="初识Vuex">     <img class="post_bg" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202003%2F02%2F20200302090738_jgqhk.thumb.400_0.jpg&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1632241783&amp;t=18bf8cb17d44b5db2b40fbd42c5c3f63" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初识Vuex"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/22/VueX/" title="初识Vuex">初识Vuex</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-21T22:04:15.000Z" title="发表于 2021-04-22 06:04:15">2021-04-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vuex/">Vuex</a></span></div><div class="content">vuex基础-介绍
+变量是一个 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/04/22/VueX/" title="初识Vuex">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初识Vuex"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/22/VueX/" title="初识Vuex">初识Vuex</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-21T22:04:15.000Z" title="发表于 2021-04-22 06:04:15">2021-04-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vuex/">Vuex</a></span></div><div class="content">vuex基础-介绍
  为什么会有Vuex ?
 
 ​    Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用**集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测**的方式发生变化。
@@ -225,7 +485,7 @@ vuex基础-初始化功能
 
 初始化：
 
-第一步：npm i vuex --save  =&gt; 安装到**运行时依赖**   =&gt; 项目上线之后依然使用的依赖 ,开发时依赖  =&gt; 开发调试时使用   ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/04/14/webpack/" title="初识webpack">     <img class="post_bg" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202003%2F02%2F20200302090738_jgqhk.thumb.400_0.jpg&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1632241783&amp;t=18bf8cb17d44b5db2b40fbd42c5c3f63" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初识webpack"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/14/webpack/" title="初识webpack">初识webpack</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-13T22:04:15.000Z" title="发表于 2021-04-14 06:04:15">2021-04-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/webpack/">webpack</a></span></div><div class="content">yarn包管理器(必须)快速、可靠、安全的依赖管理工具。和 npm 类似, 都是包管理工具, 可以用于下载包, 就是比npm快
+第一步：npm i vuex --save  =&gt; 安装到**运行时依赖**   =&gt; 项目上线之后依然使用的依赖 ,开发时依赖  =&gt; 开发调试时使用   ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/04/14/webpack/" title="初识webpack">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初识webpack"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/14/webpack/" title="初识webpack">初识webpack</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-13T22:04:15.000Z" title="发表于 2021-04-14 06:04:15">2021-04-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/webpack/">webpack</a></span></div><div class="content">yarn包管理器(必须)快速、可靠、安全的依赖管理工具。和 npm 类似, 都是包管理工具, 可以用于下载包, 就是比npm快
 中文官网地址: https://yarn.bootcss.com/
 下载yarn下载地址:  https://yarn.bootcss.com/docs/install/#windows-stable 
 
@@ -242,80 +502,54 @@ mac如果没安装过homeBrew先运行这个命令
 
 ==不要安到带中文的路径下, 建议在C盘/==
 使用yarn与npm类似, 可以试试, 新建一个空白文件夹, 执行以下命令尝试一下
-12345678910111213 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/03/03/Node.js%E7%AC%94%E8%AE%B0(2)/" title="Node.js笔记(2)">     <img class="post_bg" src="/2021/03/03/Node.js%E7%AC%94%E8%AE%B0(2)/QGIS.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Node.js笔记(2)"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/03/Node.js%E7%AC%94%E8%AE%B0(2)/" title="Node.js笔记(2)">Node.js笔记(2)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-03T07:04:15.000Z" title="发表于 2021-03-03 15:04:15">2021-03-03</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">npm介绍NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
+12345678910111213 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/22/vue%E5%BA%94%E7%94%A83%E2%80%94HR-saas%E4%B8%AD%E5%8F%B0%E7%B3%BB%E7%BB%9F/" title="vue应用3—HR-saas中台系统">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue应用3—HR-saas中台系统"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/22/vue%E5%BA%94%E7%94%A83%E2%80%94HR-saas%E4%B8%AD%E5%8F%B0%E7%B3%BB%E7%BB%9F/" title="vue应用3—HR-saas中台系统">vue应用3—HR-saas中台系统</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-22T07:04:15.000Z" title="发表于 2021-02-22 15:04:15">2021-02-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">1.项目设计
+1.人力资源的环境搭建vue-element-admin的了解和介绍目标: 学习和了解通用的vue后台集成方案**vue-element-admin**
+vue-element-admin 是一个后台前端解决方案，它基于 vue 和 element-ui实现。它使用了最新的前端技术栈，内置了 i18 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。
+vue-element-admin 是一个后台集成方案, 集成了PC项目中很多的业务场景和功能, 尤其在当下SPA的趋势下,我们可以从中获得很多成熟的解决方案.
 
-允许用户从NPM服务器下载别人编写的第三方包到本地使用。
-允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。
-允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+vue-element-admin 有一个成熟的集成方案，里面包含了所有的业务功能和场景,并不适合直接拿来进行二次开发, 但是可以通过该项目中的一个案例来进行学习和使用.
 
-网站npmjs.com 网站 是用来搜索npm包的
-npm命令行工具npm也有版本概念，可以通过npm –version来查看npm的版本
-升级npm(自己升级自己)：
-1npm install --global npm
+这里是官网地址
+这里是线上demo地址
 
-常用命令
-npm init(生成package.json说明书文件)
+如果你想查看该项目的具体功能和效果，可以拉取代码，启动进行预览￥ 
 
-npm init -y(可以跳过向导，快速生成)
+123$ git clone https://github.com/PanJiaChen/vue-elemen ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/21/vue%E5%BA%94%E7%94%A82-vue%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E4%BB%BF%E5%A4%B4%E6%9D%A1demo/" title="vue应用2-vue移动端-头条demo">     <img class="post_bg" src="https://gitee.com/abigail110/blogimage/raw/master/img/index3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue应用2-vue移动端-头条demo"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/21/vue%E5%BA%94%E7%94%A82-vue%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E4%BB%BF%E5%A4%B4%E6%9D%A1demo/" title="vue应用2-vue移动端-头条demo">vue应用2-vue移动端-头条demo</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-21T07:04:15.000Z" title="发表于 2021-02-21 15:04:15">2021-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a></span></div><div class="content">一、项目初始化
+目标
 
-npm install
-
-一次性把dependencies选项中的依赖项全部安装
-简写（npm i）
-
-
-npm install包名
-
-只下载
-简写（npm i 包名）
+能使用 Vue CLI 创建项目
+了解 Vant 组件库的导入方式
+掌握制作使用字体图标的方式
+掌握如何在 Vue 项目中处理 REM 适配
+理解 axios 请求模块的封装
 
 
-npm install –save 包名
+使用 Vue CLI 创建项目
+如果你还没有安装 VueCLI，请执行下面的命令安装或是升级：
+1npm install --global @vue/cli
 
-下载并且保存依赖项（package.json文件中的dependencies选项）
-简写（npm i 包名）
-–sa ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/03/02/Node.js%E7%AC%94%E8%AE%B0(1)/" title="Node.js笔记(1)">     <img class="post_bg" src="/2021/03/02/Node.js%E7%AC%94%E8%AE%B0(1)/QGIS.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Node.js笔记(1)"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/02/Node.js%E7%AC%94%E8%AE%B0(1)/" title="Node.js笔记(1)">Node.js笔记(1)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-02T07:04:15.000Z" title="发表于 2021-03-02 15:04:15">2021-03-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Node-js/">Node.js</a></span></div><div class="content">
-根据B站黑马记录的笔记，并且也做了对应的思维导图，搭配食用更佳
+在命令行中输入以下命令创建 Vue 项目：
+1vue create toutiao-m
 
-Node.JS简介何为Node.JS
-Node.JS为JavaScript运行时
-Node.JS是JavaScript的运行平台
-它既不是一门语言，也不是框架，它是一个平台Node.JS中的JS
-Node.JS没有dom和bom
-EcmaScript
-Node.JS在JavaScript执行环境中为JavaScript提供一些服务器级别的API
-文件读写
-网络服务构建
-网络通信
-http服务器
-……
+1234Vue CLI v4.2.3? Please pick a preset:  default (babel, eslint)&gt; Manually select features
 
+default：默认勾选 babel、eslint，回车之后直接进入装包
+manually：自定义勾选特性配置，选择完毕之后，才会进入装包
+选择第 2 种：手动选择特性，支持更多自定义选项
 
-
-Node.JS构建于Chrome的V8引擎
-代码只是具有特定格式的字符串
-引擎可以认识它，帮你解析和执行
-Google Chrome的V8引擎是目前公认的解析执行JavaScript代码最快的
-Node.js的作者把Google Chrome中的V8引擎移植出来，开发了一个独立的JavaScript运行时环境
-
-Node.JS的特性
-envent-driven 事件驱动
-non-blocking I/O mode 非阻塞I/O模型（异步）
-ightweight and efficent. 轻量和高效
-
-Node.JS ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/07/01/%E7%A7%98%E5%AF%86%E8%8A%B1%E5%9B%AD/" title="秘密花园">     <img class="post_bg" src="https://pic.qqtn.com/up/2020-4/15870171919617644.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秘密花园"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/01/%E7%A7%98%E5%AF%86%E8%8A%B1%E5%9B%AD/" title="秘密花园">秘密花园</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-01T00:04:15.000Z" title="发表于 2020-07-01 08:04:15">2020-07-01</time></span></div><div class="content">
-  bd25ed9264b080267271e137e33d0ce13bdc2f5824f3c0520863f0609a76a61d27f3ac9c47d463a0812e1cc812ac4daf136e8691065e818c05f7cf787d53e447204d2f30ab8d010b9c780a4de24a44d5e99787bfad8201f998f3bd06e08fe0b6dab353c41fb1c1248aa1790af8de9152639dd688dad1f85f305841c41bb90461b9cce617338e8414f3bae9aa089dd3543af712850f49d90fe184ef1eec5f49de3be206717453038d5f156993d51e3c26b0708f1731d11c6988c6d80c6fcbb3178d88e162339bb7a8b4d158881047acd595eb5714c753d9814131ad204e71e245e6462343bcff046c31018f6fc797bd5ece257773d6336c51c ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">路小雨</div><div class="author-info__description">纵有疾风起,人生不言弃</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AbigailCui"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">在难以企及,不朽的时间黑夜里,会有人类群星闪耀时刻,宛若星辰刺破黑暗<div class="twopeople"><div class="twopeople"><div class="container"style="height:200px;"><canvas class="illo"width="800"height="800"style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas></div><script src="https://cdn.guole.fun/js/twopeople1.js"></script><script src="https://cdn.guole.fun/js/zdog.dist.js"></script><script id="rendered-js"src="https://cdn.guole.fun/js/twopeople.js"></script><style>.twopeople{margin:0;align-items:center;justify-content:center;text-align:center}canvas{display:block;margin:0 auto;cursor:move}</style></div></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/09/21/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB/" title="前端性能优化"><img src="/2021/09/21/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB/code.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端性能优化"/></a><div class="content"><a class="title" href="/2021/09/21/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB/" title="前端性能优化">前端性能优化</a><time datetime="2021-09-21T00:04:15.000Z" title="发表于 2021-09-21 08:04:15">2021-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/14/%E6%88%91%E7%9A%84%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%91%BD%E6%89%8B%E5%86%8C/" title="我的前端保命手册"><img src="/2021/08/14/%E6%88%91%E7%9A%84%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%91%BD%E6%89%8B%E5%86%8C/code.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的前端保命手册"/></a><div class="content"><a class="title" href="/2021/08/14/%E6%88%91%E7%9A%84%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%91%BD%E6%89%8B%E5%86%8C/" title="我的前端保命手册">我的前端保命手册</a><time datetime="2021-08-14T00:04:15.000Z" title="发表于 2021-08-14 08:04:15">2021-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/14/Git%E5%B8%B8%E7%94%A8%E6%80%BB%E7%BB%93/" title="Git"><img src="/2021/07/14/Git%E5%B8%B8%E7%94%A8%E6%80%BB%E7%BB%93/code.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git"/></a><div class="content"><a class="title" href="/2021/07/14/Git%E5%B8%B8%E7%94%A8%E6%80%BB%E7%BB%93/" title="Git">Git</a><time datetime="2021-07-14T00:04:15.000Z" title="发表于 2021-07-14 08:04:15">2021-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/02/vue%E5%BA%94%E7%94%A83%E2%80%94HR-saas%E4%B8%AD%E5%8F%B0%E7%B3%BB%E7%BB%9F/" title="vue应用3—HR-saas中台系统"><img src="/2021/07/02/vue%E5%BA%94%E7%94%A83%E2%80%94HR-saas%E4%B8%AD%E5%8F%B0%E7%B3%BB%E7%BB%9F/image-20200711002545085.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue应用3—HR-saas中台系统"/></a><div class="content"><a class="title" href="/2021/07/02/vue%E5%BA%94%E7%94%A83%E2%80%94HR-saas%E4%B8%AD%E5%8F%B0%E7%B3%BB%E7%BB%9F/" title="vue应用3—HR-saas中台系统">vue应用3—HR-saas中台系统</a><time datetime="2021-07-02T07:04:15.000Z" title="发表于 2021-07-02 15:04:15">2021-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/01/Todo-List/" title="基于vue的简易Todo-List"><img src="/2021/07/01/Todo-List/todo-list.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于vue的简易Todo-List"/></a><div class="content"><a class="title" href="/2021/07/01/Todo-List/" title="基于vue的简易Todo-List">基于vue的简易Todo-List</a><time datetime="2021-07-01T00:04:15.000Z" title="发表于 2021-07-01 08:04:15">2021-07-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+1234567891011? Please pick a preset: Manually select features? Check the feature ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">路小雨</div><div class="author-info__description">纵有疾风起,人生不言弃</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AbigailCui"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">在难以企及,不朽的时间黑夜里,会有人类群星闪耀时刻,宛若星辰刺破黑暗<div class="twopeople"><div class="twopeople"><div class="container"style="height:200px;"><canvas class="illo"width="800"height="800"style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas></div><script src="https://cdn.guole.fun/js/twopeople1.js"></script><script src="https://cdn.guole.fun/js/zdog.dist.js"></script><script id="rendered-js"src="https://cdn.guole.fun/js/twopeople.js"></script><style>.twopeople{margin:0;align-items:center;justify-content:center;text-align:center}canvas{display:block;margin:0 auto;cursor:move}</style></div></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/09/24/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5%E4%B9%8B%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88/" title="实践前端优化策略之我的hexo博客"><img src="https://gitee.com/abigail110/blogimage/raw/master/img/code1.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实践前端优化策略之我的hexo博客"/></a><div class="content"><a class="title" href="/2021/09/24/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5%E4%B9%8B%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88/" title="实践前端优化策略之我的hexo博客">实践前端优化策略之我的hexo博客</a><time datetime="2021-09-24T07:04:15.000Z" title="发表于 2021-09-24 15:04:15">2021-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/23/PicGo+Gitee%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" title="PicGo+Gitee搭建图床"><img src="https://gitee.com/abigail110/blogimage/raw/master/img/code1.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PicGo+Gitee搭建图床"/></a><div class="content"><a class="title" href="/2021/09/23/PicGo+Gitee%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" title="PicGo+Gitee搭建图床">PicGo+Gitee搭建图床</a><time datetime="2021-09-23T00:04:15.000Z" title="发表于 2021-09-23 08:04:15">2021-09-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/20/%E4%BD%BF%E7%94%A8GitHub+%E7%A0%81%E4%BA%91+Coding%E6%9D%A5%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99/" title="使用github+Coding+码云部署网站"><img src="https://gitee.com/abigail110/blogimage/raw/master/img/code1.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用github+Coding+码云部署网站"/></a><div class="content"><a class="title" href="/2021/09/20/%E4%BD%BF%E7%94%A8GitHub+%E7%A0%81%E4%BA%91+Coding%E6%9D%A5%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99/" title="使用github+Coding+码云部署网站">使用github+Coding+码云部署网站</a><time datetime="2021-09-20T00:04:15.000Z" title="发表于 2021-09-20 08:04:15">2021-09-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/20/%E4%BD%BF%E7%94%A8Jsdelivr:CDN%E5%8A%A0%E9%80%9F%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/" title="使用Jsdelivr/CDN加速访问速度"><img src="https://gitee.com/abigail110/blogimage/raw/master/img/code1.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Jsdelivr/CDN加速访问速度"/></a><div class="content"><a class="title" href="/2021/09/20/%E4%BD%BF%E7%94%A8Jsdelivr:CDN%E5%8A%A0%E9%80%9F%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/" title="使用Jsdelivr/CDN加速访问速度">使用Jsdelivr/CDN加速访问速度</a><time datetime="2021-09-20T00:04:15.000Z" title="发表于 2021-09-20 08:04:15">2021-09-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/19/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB/" title="前端性能优化"><img src="https://gitee.com/abigail110/blogimage/raw/master/img/code1.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端性能优化"/></a><div class="content"><a class="title" href="/2021/09/19/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB/" title="前端性能优化">前端性能优化</a><time datetime="2021-09-19T00:04:15.000Z" title="发表于 2021-09-19 08:04:15">2021-09-19</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             
             </div>
             <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Node-js/"><span class="card-category-list-name">Node.js</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vue/"><span class="card-category-list-name">Vue</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vuex/"><span class="card-category-list-name">Vuex</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/git/"><span class="card-category-list-name">git</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/webpack/"><span class="card-category-list-name">webpack</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/"><span class="card-category-list-name">前端优化</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93/"><span class="card-category-list-name">前端总结</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/git/" style="font-size: 1.15em; color: rgb(135, 190, 50)">git</a><a href="/tags/Vue%E5%BA%94%E7%94%A8/" style="font-size: 1.35em; color: rgb(138, 172, 199)">Vue应用</a><a href="/tags/Vue/" style="font-size: 1.45em; color: rgb(111, 28, 175)">Vue</a><a href="/tags/Node-js/" style="font-size: 1.25em; color: rgb(66, 74, 141)">Node.js</a><a href="/tags/Vue-Vuex/" style="font-size: 1.15em; color: rgb(51, 57, 4)">Vue - Vuex</a><a href="/tags/webpack/" style="font-size: 1.15em; color: rgb(80, 147, 27)">webpack</a><a href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" style="font-size: 1.15em; color: rgb(75, 39, 171)">前端优化</a><a href="/tags/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93/" style="font-size: 1.25em; color: rgb(174, 61, 67)">前端总结</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">九月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">八月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">七月 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">六月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">18</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2021-01-06T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">220k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-09-22T12:57:09.804Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 路小雨</div><div class="footer_custom_text">plain living and high thinking</div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Node-js/"><span class="card-category-list-name">Node.js</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vue/"><span class="card-category-list-name">Vue</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vuex/"><span class="card-category-list-name">Vuex</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/git/"><span class="card-category-list-name">git</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/webpack/"><span class="card-category-list-name">webpack</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/"><span class="card-category-list-name">前端优化</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93/"><span class="card-category-list-name">前端总结</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%80%9A%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="card-category-list-name">通用设计模式</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/git/" style="font-size: 1.15em; color: rgb(103, 17, 58)">git</a><a href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" style="font-size: 1.39em; color: rgb(55, 20, 120)">前端优化</a><a href="/tags/PicGo/" style="font-size: 1.15em; color: rgb(166, 111, 188)">PicGo</a><a href="/tags/Vue%E5%BA%94%E7%94%A8/" style="font-size: 1.27em; color: rgb(114, 56, 89)">Vue应用</a><a href="/tags/Vue/" style="font-size: 1.45em; color: rgb(8, 159, 14)">Vue</a><a href="/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/" style="font-size: 1.15em; color: rgb(39, 67, 154)">网站部署</a><a href="/tags/Coding/" style="font-size: 1.15em; color: rgb(106, 78, 46)">Coding</a><a href="/tags/CDN/" style="font-size: 1.15em; color: rgb(46, 25, 54)">CDN</a><a href="/tags/Node-js/" style="font-size: 1.21em; color: rgb(45, 176, 68)">Node.js</a><a href="/tags/Vuex/" style="font-size: 1.15em; color: rgb(121, 17, 46)">Vuex</a><a href="/tags/webpack/" style="font-size: 1.15em; color: rgb(67, 102, 159)">webpack</a><a href="/tags/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93/" style="font-size: 1.33em; color: rgb(184, 52, 123)">前端总结</a><a href="/tags/%E9%80%9A%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.15em; color: rgb(65, 8, 197)">通用设计模式</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">九月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">八月 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">七月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/02/"><span class="card-archive-list-date">二月 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2021-01-06T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">244k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-09-24T11:27:53.458Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 路小雨</div><div class="footer_custom_text">plain living and high thinking</div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
   getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js').then(() => {
     jinrishici.load(function (result) {
       if (true) {
-        var sub = "I am a slow walker,but I never walker backwards.".length == 0 ? new Array() : "I am a slow walker,but I never walker backwards.".split(',')
+        var sub = "I am a slow walker but I never walk backwards".length == 0 ? new Array() : "I am a slow walker but I never walk backwards".split(',')
         var content = result.data.content
         var both = sub.unshift(content)
         var typed = new Typed('#subtitle', {
@@ -341,11 +575,11 @@ if (true) {
 } else {
   subtitleType()
 }
-</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+</script></div><canvas id="universe"></canvas><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="150" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><div class="aplayer" data-id="720305850" data-server="netease" data-type="playlist" data-fixed="true" data-listFolded="false" data-order="random" data-preload="none"></div><link rel="stylesheet" href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css"><script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
   'title',
   '#config-diff',
   '#body-wrap',
