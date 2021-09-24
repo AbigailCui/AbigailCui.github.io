@@ -76,12 +76,6 @@
 <p>   *列好分支清单，统一好分支的命名，不要使分支混乱<br>   *定时合并和清理分支，保证分支的简洁度和项目功能的完整度<br>   *在一个大版本即将发布之时，检查好该版本的功能完整性以及测试是否可以正常运行，尽量少做在发布之时修改bug。<br>   *提交每个版本时要做好清晰的备注</p>
 <h2 id="4-git工作流程"><a href="#4-git工作流程" class="headerlink" title="4.git工作流程"></a>4.git工作流程</h2><p>参考博客：<a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html">http://www.ruanyifeng.com/blog/2015/12/git-workflow.html</a></p>
 ]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
   </entry>
   <entry>
     <title>PicGo+Gitee搭建图床</title>
@@ -117,13 +111,6 @@
 </ul>
 <p>##每次只要点击一下就可以复制路径了,特别特别方便,是这段时间我使用过最好使的工具🔧,自己用简直不要太方便了,啊啊啊</p>
 ]]></content>
-      <categories>
-        <category>前端优化</category>
-      </categories>
-      <tags>
-        <tag>前端优化</tag>
-        <tag>PicGo</tag>
-      </tags>
   </entry>
   <entry>
     <title>基于vue的简易Todo-List</title>
@@ -158,13 +145,6 @@
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">//获取本地数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">dataName</span>) </span>{</span><br><span class="line">  <span class="comment">// localStorge为window内置属性，用于在浏览器存储本地信息</span></span><br><span class="line">  <span class="comment">// 该数据除非手动删除，否则会一直存在</span></span><br><span class="line">  <span class="comment">// let data = localStorage.getItem("todoList") //取值</span></span><br><span class="line">  <span class="keyword">let</span> data = <span class="built_in">localStorage</span>.getItem(dataName) <span class="comment">//取值</span></span><br><span class="line">  <span class="keyword">if</span> (data !== <span class="literal">null</span>) {</span><br><span class="line">    <span class="comment">//ES6将变量作为键→[变量名]</span></span><br><span class="line">    <span class="comment">// return JSON.parse(data).[dataName] //将数据转换为json</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(data)</span><br><span class="line">  } <span class="keyword">else</span> {</span><br><span class="line">    <span class="keyword">return</span> []</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存本地数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveData</span>(<span class="params">data, dataName</span>) </span>{</span><br><span class="line">  <span class="comment">//JSON.stringify()将json数据转换为字符串</span></span><br><span class="line">  <span class="built_in">localStorage</span>.setItem(dataName, <span class="built_in">JSON</span>.stringify(data)) <span class="comment">//设值    </span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//删除数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteData</span>(<span class="params">index, dataName</span>) </span>{</span><br><span class="line">  <span class="comment">//获取本地数据</span></span><br><span class="line">  <span class="keyword">let</span> data = getData(dataName)</span><br><span class="line">  <span class="comment">// let index = index //获取索引号</span></span><br><span class="line">  <span class="comment">//改本地数据（删除数据）</span></span><br><span class="line">  data.splice(index, <span class="number">1</span>)</span><br><span class="line">  <span class="comment">//保存本地数据</span></span><br><span class="line">  saveData(data)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>后面就是简单的给各个组件注册事件，然后执行相关操作就可以啦</p>
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue应用</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>使用github+Coding+码云部署网站</title>
@@ -225,14 +205,6 @@
 <h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><p>一定要选择静态网站,千万别选专门的hexo,然后自动部署,这里很坑,因为只能选香港服务器,这样的话服务器属于境外,<br>到时候DNS解析还是默认,那就是我菲律宾的github使得上劲,如果要选国内就必须备案(就需要自己搭服务器),<br>要不然就失去coding的存在意义,因为她非常麻烦所以不划算</p>
 <h1 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h1><p>有机会如果客流量大的话会用coding的,现在暂时的线路是白嫖…就是境内(码云),境外github</p>
 ]]></content>
-      <categories>
-        <category>前端优化</category>
-      </categories>
-      <tags>
-        <tag>前端优化</tag>
-        <tag>网站部署</tag>
-        <tag>Coding</tag>
-      </tags>
   </entry>
   <entry>
     <title>使用Jsdelivr/CDN加速访问速度</title>
@@ -260,13 +232,6 @@
 <li>如果以后在向 cdn 库里添加或者修改文件，首先把文件添加到本地仓库，然后依次在本地 cdn 仓库文件位置执行以下命令：</li>
 </ol>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git pull origin main  <span class="comment">#拉取远程仓库到本地</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'描述内容'</span></span><br><span class="line">git push origin main <span class="comment"># 推送到GitHub仓库</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>]]></content>
-      <categories>
-        <category>前端优化</category>
-      </categories>
-      <tags>
-        <tag>前端优化</tag>
-        <tag>CDN</tag>
-      </tags>
   </entry>
   <entry>
     <title>秘密花园</title>
@@ -591,12 +556,6 @@
 <p>那么，你相当于改了exports的值，那么它就会与module.exports分道扬镳，它的值也不会等于module导出的值</p>
 <p>所以，为了保险起见，新手最好使用module.exports导出你要导出的内容，避免错误</p>
 ]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-      </tags>
   </entry>
   <entry>
     <title>Node.js笔记(2)</title>
@@ -789,12 +748,6 @@
 
 
 ]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-      </tags>
   </entry>
   <entry>
     <title>初识Vuex</title>
@@ -1103,13 +1056,6 @@
 
 
 ]]></content>
-      <categories>
-        <category>Vuex</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-        <tag>Vuex</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue基础6-路由_vant组件库使用</title>
@@ -1671,12 +1617,6 @@
 <p>总结: 改变浏览器url的hash值, JS监听到hash值改变, 把对应的组件显示到同一个挂载点</p>
 </blockquote>
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>初识webpack</title>
@@ -2122,12 +2062,6 @@
 </li>
 </ol>
 ]]></content>
-      <categories>
-        <category>webpack</category>
-      </categories>
-      <tags>
-        <tag>webpack</tag>
-      </tags>
   </entry>
   <entry>
     <title>web安全</title>
@@ -2389,12 +2323,6 @@
 <h5 id="可执行与可写权限分离"><a href="#可执行与可写权限分离" class="headerlink" title="可执行与可写权限分离"></a>可执行与可写权限分离</h5><p>包含可执行脚本的目录禁止用户写入，用户写入文件的目录禁止执行</p>
 <h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><h4 id="什么是SQL"><a href="#什么是SQL" class="headerlink" title="什么是SQL"></a>什么是SQL</h4><p>SQL是一种数据库查询语言</p>
 ]]></content>
-      <categories>
-        <category>前端优化</category>
-      </categories>
-      <tags>
-        <tag>前端优化</tag>
-      </tags>
   </entry>
   <entry>
     <title>实践前端优化策略之我的hexo博客</title>
@@ -2470,12 +2398,6 @@
 </blockquote>
 <h1 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h1><p>这是我通过前端优化所可以学习到的知识,以后会有更多好点子了再来更新…见笑啦😜</p>
 ]]></content>
-      <categories>
-        <category>前端优化</category>
-      </categories>
-      <tags>
-        <tag>前端优化</tag>
-      </tags>
   </entry>
   <entry>
     <title>通用设计模式</title>
@@ -2674,13 +2596,6 @@
 <h3 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h3><p>使用一层中介者，来处理多对多的逻辑关系。</p>
 <p>mvc模式中的controller</p>
 ]]></content>
-      <categories>
-        <category>通用设计模式</category>
-      </categories>
-      <tags>
-        <tag>前端总结</tag>
-        <tag>通用设计模式</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue基础1-vue脚手架&amp;基础API</title>
@@ -3246,12 +3161,6 @@
 
 <p><img src="/2021/05/14/vue%E5%9F%BA%E7%A1%801-vue%E8%84%9A%E6%89%8B%E6%9E%B6&amp;%E5%9F%BA%E7%A1%80API/4.9.1_%E7%BB%83%E4%B9%A0_%E9%80%89%E6%8B%A9%E5%96%9C%E6%AC%A2%E7%9A%84%E6%A0%8F%E7%9B%AE.gif" alt="4.9.1_练习_选择喜欢的栏目"></p>
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue基础2-基础API_计算属性_过滤器_侦听器</title>
@@ -3804,12 +3713,6 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id="app"&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;span&gt;姓名:&lt;/span&gt;</span><br><span class="line">      &lt;input type="text" /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;span&gt;年龄:&lt;/span&gt;</span><br><span class="line">      &lt;input type="number" /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;span&gt;性别:&lt;/span&gt;</span><br><span class="line">      &lt;select &gt;</span><br><span class="line">        &lt;option value="男"&gt;男&lt;/option&gt;</span><br><span class="line">        &lt;option value="女"&gt;女&lt;/option&gt;</span><br><span class="line">      &lt;/select&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button &gt;添加/修改&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;table</span><br><span class="line">        border="1"</span><br><span class="line">        cellpadding="10"</span><br><span class="line">        cellspacing="0"</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">          &lt;th&gt;序号&lt;/th&gt;</span><br><span class="line">          &lt;th&gt;姓名&lt;/th&gt;</span><br><span class="line">          &lt;th&gt;年龄&lt;/th&gt;</span><br><span class="line">          &lt;th&gt;性别&lt;/th&gt;</span><br><span class="line">          &lt;th&gt;操作&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr &gt;</span><br><span class="line">          &lt;td&gt;&lt;/td&gt;</span><br><span class="line">          &lt;td&gt;&lt;/td&gt;</span><br><span class="line">          &lt;td&gt;&lt;/td&gt;</span><br><span class="line">          &lt;td&gt;&lt;/td&gt;</span><br><span class="line">          &lt;td&gt;</span><br><span class="line">            &lt;button &gt;删除&lt;/button&gt;</span><br><span class="line">            &lt;button &gt;编辑&lt;/button&gt;</span><br><span class="line">          &lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">      &lt;/table&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default {</span><br><span class="line">  </span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue基础4-生命周期_组件进阶</title>
@@ -4337,12 +4240,6 @@
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="string">"status"</span>: <span class="number">201</span>, <span class="comment">// 后台返回数据逻辑层的状态码, 201代表后台已经新增加了一个资源</span></span><br><span class="line">    <span class="string">"data"</span>: {</span><br><span class="line">        <span class="string">"author"</span>: <span class="string">"施大神"</span></span><br><span class="line">        <span class="string">"bookname"</span>: <span class="string">"水浒传2"</span></span><br><span class="line">        <span class="string">"id"</span>: <span class="number">41</span></span><br><span class="line">        <span class="string">"publisher"</span>: <span class="string">"未来出版社"</span></span><br><span class="line">    }</span><br><span class="line">    <span class="string">"msg"</span>: <span class="string">"添加图书成功"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue基础5-动态组件_插槽_自定义指令</title>
@@ -4812,12 +4709,6 @@
 <figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'姓名'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'text'</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'密码'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'password'</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'性别'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'radio'</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"男"</span>/&gt;</span>男</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'radio'</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"女"</span>/&gt;</span>女</span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'爱好'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'checkbox'</span> <span class="attr">value</span>=<span class="string">"抽烟"</span> /&gt;</span>抽烟</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'checkbox'</span> <span class="attr">value</span>=<span class="string">"喝酒"</span> /&gt;</span>喝酒</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'checkbox'</span> <span class="attr">value</span>=<span class="string">"烫头"</span> /&gt;</span>烫头</span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-com</span> <span class="attr">:title</span>=<span class="string">"'来自于'"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"北京"</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"天津"</span>&gt;</span>天津<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"南京"</span>&gt;</span>南京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">child-com</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    new Vue({</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">        el: "#app",</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">        components: {</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">            childCom: { // 组件名字</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                props: {</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                    title: {</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                        type: String</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                    }</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                },</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">                template: `<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"border: 1px solid black;"</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><span class="template-variable">{{<span class="name">title</span>}}</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars"><span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">            }</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">        }</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    })</span></span></span><br><span class="line"><span class="xml"><span class="handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue应用1—用vant和node实现网易云音乐案例</title>
@@ -5178,13 +5069,6 @@
 </ul>
 <h2 id="今日作业"><a href="#今日作业" class="headerlink" title="今日作业"></a>今日作业</h2><p>把课上的案例-从0再来一遍, 为下阶段移动端项目铺垫</p>
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue应用</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>我的前端保命手册-2</title>
@@ -5516,12 +5400,6 @@
 
 
 ]]></content>
-      <categories>
-        <category>前端总结</category>
-      </categories>
-      <tags>
-        <tag>前端总结</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue基础3-vue组件_组件通信_todo案例</title>
@@ -6065,12 +5943,6 @@
 <p>无vue代码的标签(==可以复制==)</p>
 <figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>测试题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">subject</span> &gt;</span><span class="tag">&lt;/<span class="name">subject</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">flag</span>&gt;</span><span class="tag">&lt;/<span class="name">flag</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> {</span></span><br><span class="line"><span class="javascript">  </span></span><br><span class="line"><span class="javascript">};</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-tag">body</span> {</span></span><br><span class="line"><span class="css">  <span class="attribute">background-color</span>: <span class="number">#eee</span>;</span></span><br><span class="line"><span class="css">}</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-id">#app</span> {</span></span><br><span class="line"><span class="css">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">500px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">margin</span>: <span class="number">50px</span> auto;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-shadow</span>: <span class="number">3px</span> <span class="number">3px</span> <span class="number">3px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">2em</span>;</span></span><br><span class="line"><span class="css">}</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>前端性能优化</title>
@@ -7120,13 +6992,6 @@
 <li>特别谢鸣博学谷、codewhy、b站!!!!我会努力的!!!</li>
 </ol>
 ]]></content>
-      <categories>
-        <category>前端优化</category>
-      </categories>
-      <tags>
-        <tag>前端优化</tag>
-        <tag>前端总结</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue应用2-vue移动端-头条demo</title>
@@ -8991,12 +8856,6 @@
 
 
 ]]></content>
-      <categories>
-        <category>前端优化</category>
-      </categories>
-      <tags>
-        <tag>前端优化</tag>
-      </tags>
   </entry>
   <entry>
     <title>我的前端保命手册-1</title>
@@ -11835,12 +11694,6 @@
 </li>
 </ul>
 ]]></content>
-      <categories>
-        <category>前端总结</category>
-      </categories>
-      <tags>
-        <tag>前端总结</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue应用3—HR-saas中台系统</title>
@@ -14449,12 +14302,5 @@
 <p>注意：这里之所以用了<strong>pathRewrite</strong>，是因为生产环境的请求基础地址是 <strong>/prod-api</strong>，需要将该地址去掉</p>
 <p>此时，项目就可以跨域访问了！</p>
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue应用</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
 </search>
