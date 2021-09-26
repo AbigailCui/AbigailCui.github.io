@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript-4 | Abigail Cui的小站</title><meta name="keywords" content="JS"><meta name="author" content="路小雨"><meta name="copyright" content="路小雨"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JavaScript性能优化什么是内存管理 申请内存空间 使用内存空间 释放内存空间  JavaScript在内存管理上与其它语言是类似的，也是经过了以上三个阶段。 什么是垃圾回收如果程序在后续的执行中，发现某些对象不再被引用时就会被认为是垃圾 JavaScript的执行引擎会回收这些垃圾对象所占用的内存空间，这个过程就是JavaScript的垃圾回收。(如果某个对象一直可以被访问使用，就不是垃圾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript-4">
+<meta property="og:url" content="https://www.abigailcui.com/2020/09/28/JavaScript-4/index.html">
+<meta property="og:site_name" content="Abigail Cui的小站">
+<meta property="og:description" content="JavaScript性能优化什么是内存管理 申请内存空间 使用内存空间 释放内存空间  JavaScript在内存管理上与其它语言是类似的，也是经过了以上三个阶段。 什么是垃圾回收如果程序在后续的执行中，发现某些对象不再被引用时就会被认为是垃圾 JavaScript的执行引擎会回收这些垃圾对象所占用的内存空间，这个过程就是JavaScript的垃圾回收。(如果某个对象一直可以被访问使用，就不是垃圾">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg">
+<meta property="article:published_time" content="2020-09-28T00:04:15.000Z">
+<meta property="article:modified_time" content="2021-09-25T09:19:03.744Z">
+<meta property="article:author" content="路小雨">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.abigailcui.com/2020/09/28/JavaScript-4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaScript-4',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-25 17:19:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css"><style type="text/css">#universe{display: block;position: fixed;margin: 0;padding: 0;border: 0;outline: 0;left: 0;top: 0;width: 100%;height: 100%;pointer-events: none;z-index: -1;}</style><style type="text/css">#toggle-sidebar {bottom: 80px}</style><style type="text/css">#toggle-sidebar {left:100px}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><!-- hexo injector head_end end --><style type="text/css" lang="css">
+    #loading-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        width: 100vw;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #FFF;
+        text-align: center;
+        /* loader页面消失采用渐隐的方式*/
+        -webkit-transition: opacity 1s ease;
+        -moz-transition: opacity 1s ease;
+        -o-transition: opacity 1s ease;
+        transition: opacity 1s ease;
+    }
+    .loading-image{
+        width: 120px;
+        height: 50px;
+        transform: translate(-50%);
+    }
+    
+    .loading-image div:nth-child(2) {
+        -webkit-animation: pacman-balls 1s linear 0s infinite;
+        animation: pacman-balls 1s linear 0s infinite
+    }
+
+    .loading-image div:nth-child(3) {
+        -webkit-animation: pacman-balls 1s linear .33s infinite;
+        animation: pacman-balls 1s linear .33s infinite
+    }
+
+    .loading-image div:nth-child(4) {
+        -webkit-animation: pacman-balls 1s linear .66s infinite;
+        animation: pacman-balls 1s linear .66s infinite
+    }
+
+    .loading-image div:nth-child(5) {
+        -webkit-animation: pacman-balls 1s linear .99s infinite;
+        animation: pacman-balls 1s linear .99s infinite
+    }
+    
+   .loading-image div:first-of-type {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
+        animation: rotate_pacman_half_up .5s 0s infinite;
+    }
+    .loading-image div:nth-child(2) {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
+        animation: rotate_pacman_half_down .5s 0s infinite;
+        margin-top: -50px;
+    }
+    @-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+    
+    @-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+    @keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+    
+   
+    .loading-image div:nth-child(3),
+    .loading-image div:nth-child(4),
+    .loading-image div:nth-child(5),
+    .loading-image div:nth-child(6){
+        background-color: #49b1f5;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        margin: 2px;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        transform: translateY(-6.25px);
+        top: 25px;
+        left: 100px;
+    }
+    .loading-text{
+        margin-bottom: 20vh;
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2rem;
+        box-sizing: border-box;
+        padding: 0 10px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    @media only screen and (max-width: 500px) {
+         .loading-text{
+            font-size: 1.5rem;
+         }
+    }
+    .fadeout {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    /* logo出现动画 */
+    @-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
+ </style>
+ <script>
+(function () {
+    const loaded = function(){
+       setTimeout(function(){
+            const loader = document.getElementById("loading-container");
+            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
+            // document.getElementById("body-wrap").style.display="flex";
+            document.getElementById("body-wrap").style.display="flex";
+            setTimeout(function(){
+                loader.style.display="none";
+            },1000); 
+        },1000);//强制显示loading page 1s  
+    };
+    loaded();
+})()
+ </script><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+ <div id="loading-container">
+     <p class="loading-text"> 全员加速中 . . . </p> 
+     <div class="loading-image">
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div> 
+         <div></div>
+     </div>
+ </div><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/todo-List/index.html#/myday"><i class="fa-fw fas fa-clock"></i><span> ToDo-List</span></a></li><li><a class="site-page child" href="/te/"><i class="fa-fw fas fa-envelope"></i><span> 疫情地图</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> 小游戏</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/catch-cat-master/index.html"><i class="fa-fw fas fa-certificate"></i><span> 堵住黑猫!</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://daxigua.guole.fun/"><i class="fa-fw fas fa-asterisk"></i><span> 合成大🍉</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog-game.vercel.app/znm/"><i class="fa-fw fas fa-podcast"></i><span> 解压六边形</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Abigail Cui的小站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/todo-List/index.html#/myday"><i class="fa-fw fas fa-clock"></i><span> ToDo-List</span></a></li><li><a class="site-page child" href="/te/"><i class="fa-fw fas fa-envelope"></i><span> 疫情地图</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> 小游戏</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/catch-cat-master/index.html"><i class="fa-fw fas fa-certificate"></i><span> 堵住黑猫!</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://daxigua.guole.fun/"><i class="fa-fw fas fa-asterisk"></i><span> 合成大🍉</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog-game.vercel.app/znm/"><i class="fa-fw fas fa-podcast"></i><span> 解压六边形</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaScript-4</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-28T00:04:15.000Z" title="发表于 2020-09-28 08:04:15">2020-09-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-25T09:19:03.744Z" title="更新于 2021-09-25 17:19:03">2021-09-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/">JS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaScript-4"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="JavaScript性能优化"><a href="#JavaScript性能优化" class="headerlink" title="JavaScript性能优化"></a>JavaScript性能优化</h1><h2 id="什么是内存管理"><a href="#什么是内存管理" class="headerlink" title="什么是内存管理"></a>什么是内存管理</h2><ul>
+<li>申请内存空间</li>
+<li>使用内存空间</li>
+<li>释放内存空间</li>
+</ul>
+<p><code>JavaScript</code>在内存管理上与其它语言是类似的，也是经过了以上三个阶段。</p>
+<h2 id="什么是垃圾回收"><a href="#什么是垃圾回收" class="headerlink" title="什么是垃圾回收"></a>什么是垃圾回收</h2><p>如果程序在后续的执行中，发现某些对象不再被引用时就会被认为是垃圾</p>
+<p><code>JavaScript</code>的执行引擎会回收这些垃圾对象所占用的内存空间，这个过程就是<code>JavaScript</code>的垃圾回收。(如果某个对象一直可以被访问使用，就不是垃圾，而这种可以被访问到的对象，我们称之为’可达对象’)</p>
+<p>所谓”可达对象”：指的就是可以被访问到的对象就是可达对象。</p>
+<h2 id="引用计数算法优缺点"><a href="#引用计数算法优缺点" class="headerlink" title="引用计数算法优缺点"></a>引用计数算法优缺点</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">优点</span><br><span class="line">      1、发现垃圾立即回收</span><br><span class="line">      2、最大限度的减少了程序的暂停</span><br><span class="line"> 缺点</span><br><span class="line">      1、无法回收循环引用的对象</span><br><span class="line">      2、时间开销比较大</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="标记清除算法介绍"><a href="#标记清除算法介绍" class="headerlink" title="标记清除算法介绍"></a>标记清除算法介绍</h2><p>第一个阶段，遍历所有对象，找到活动的对象，然后进行标记</p>
+<p>第二个阶段还是会遍历所有对象，并对没有标记的对象进行清除</p>
+<h2 id="V8引擎介绍"><a href="#V8引擎介绍" class="headerlink" title="V8引擎介绍"></a>V8引擎介绍</h2><p><code>V8</code>引擎的性能是非常高的。性能高的原因：</p>
+<p>第一：优秀的内存管理机制</p>
+<p>第二：<code>V8</code>引擎采用即时编译。也就是可以直接将<code>javascript</code>代码翻译成机器码进行执行。这样导致的结果就是执行的速度非常快。</p>
+<p>第三：<code>V8</code>引擎内存是有上限的，在64位操作系统中，内存不超过<code>1.5G</code>.对32位操作系统是不超过<code>800M</code>. </p>
+<h2 id="6、V8引擎垃圾回收的机制"><a href="#6、V8引擎垃圾回收的机制" class="headerlink" title="6、V8引擎垃圾回收的机制"></a>6、V8引擎垃圾回收的机制</h2><p><code>V8</code>引擎采用分代回收的思想，将内存分为新生代和老生代。</p>
+<p>第一步： 在From空间中分配了3个对象A、B、C</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B61.jpg"></p>
+<p>第二步：<code>GC</code>进来判断对象B没有其他引用，可以回收，对象A和C依然为活跃对象.</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B62.jpg"></p>
+<p>第三步：将活跃对象A、C从From空间复制到To空间</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B63.jpg"></p>
+<p>第四步：清空From空间的全部内存</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B64.jpg"></p>
+<p>第五步：交换From空间和To空间</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B65.jpg"></p>
+<p>第六步：在From空间中又新增了2个对象D、E</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B66.jpg"></p>
+<p>第七步：下一轮<code>GC</code>进来发现对象D没有引用了，做标记</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B67.jpg"></p>
+<p>第八步：将活跃对象A、C、E从From空间复制到To空间</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B68.jpg"></p>
+<p>第九步：清空From空间全部内存</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B69.jpg"></p>
+<p>第十步：继续交换From空间和To空间，开始下一轮</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B610.jpg"></p>
+<p>当一个对象经过多次复制后仍然存活，它就会被认为是生命周期较长的对象，这种生命周期较长的对象会被移动到老生代中。</p>
+<p>对象从新生代移动到老生代的过程就叫做晋升。</p>
+<p>对象晋升的条件主要有两个：</p>
+<p>第一：对象从From空间复制到To空间时，会检查它的内存地址来判断这个对象是否已经经历过一次清除回收。如果已经经历过了，会将该对象从From空间移动到老生代空间中，如果没有，则复制到To空间</p>
+<p>第二：当要从From空间复制一个对象到To空间时，如果To空间已经使用了超过25%，则这个对象直接晋升到老生代中。设置25%这个阈值的原因是当这次清除回收完成后，这个To空间会变为From空间，接下来的内存分配将在这个空间中进行。如果占比过高，内存就不够了，这样就会影响后续的内存分配。</p>
+<p>下面我们再来看一下**<code>V8</code>引擎对老生代对象回收的实现过程。**</p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B611.jpg"></p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B612.jpg" alt="垃圾回收12"></p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B613.jpg" alt="垃圾回收13"></p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B614.jpg" alt="垃圾回收14"></p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B615.jpg" alt="垃圾回收15"></p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B616.jpg" alt="垃圾回收16"></p>
+<p><img src="/2020/09/28/JavaScript-4/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B617.jpg" alt="垃圾回收17"></p>
+<h2 id="7、全局变量问题"><a href="#7、全局变量问题" class="headerlink" title="7、全局变量问题"></a>7、全局变量问题</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、全局变量查找比较消耗时间</span><br><span class="line"> 2、全局变量一直存储在内存中，降低了内存的使用。</span><br><span class="line"> 3、局部变量与全局变量重名的问题。</span><br></pre></td></tr></tbody></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">路小雨</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.abigailcui.com/2020/09/28/JavaScript-4/">https://www.abigailcui.com/2020/09/28/JavaScript-4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.abigailcui.com" target="_blank">Abigail Cui的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/25/Git%E5%B8%B8%E7%94%A8%E6%80%BB%E7%BB%93/"><img class="prev-cover" src="https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Git</div></div></a></div><div class="next-post pull-right"><a href="/2020/09/27/JavaScript-3/"><img class="next-cover" src="https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaScript-3</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/09/27/JavaScript-3/" title="JavaScript-3"><img class="cover" src="https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-27</div><div class="title">JavaScript-3</div></div></a></div><div><a href="/2020/09/26/JavaScript-2/" title="JavaScript-2"><img class="cover" src="https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-26</div><div class="title">JavaScript-2</div></div></a></div><div><a href="/2020/09/25/JavaScript-1/" title="JavaScript-1"><img class="cover" src="https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-25</div><div class="title">JavaScript-1</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">JavaScript性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">什么是内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">1.2.</span> <span class="toc-text">什么是垃圾回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E7%AE%97%E6%B3%95%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">引用计数算法优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.4.</span> <span class="toc-text">标记清除算法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V8%E5%BC%95%E6%93%8E%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.5.</span> <span class="toc-text">V8引擎介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81V8%E5%BC%95%E6%93%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E6%9C%BA%E5%88%B6"><span class="toc-number">1.6.</span> <span class="toc-text">6、V8引擎垃圾回收的机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.</span> <span class="toc-text">7、全局变量问题</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://gitee.com/abigailcui/blogimage/raw/master/img/QGIS.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 路小雨</div><div class="footer_custom_text">plain living and high thinking</div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="150" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='/'|| '/' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>function electric_clock_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+                console.log('已挂载electric_clock')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='/'|| '/' ==='all')){
+
+            electric_clock_injector_config()
+        } </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax  src="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body></html>
